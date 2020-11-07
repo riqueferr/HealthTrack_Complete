@@ -1,0 +1,522 @@
+
+body, html {
+    font-family: 'acumin-pro', sans-serif;
+}
+
+main {
+    display: block;
+    height: 100%;
+    background-color: #161616;
+    width: calc(100% - 300px);
+    font-family: 'acumin-pro', sans-serif;
+}
+
+main .main-content {
+    padding: 10px;
+    width: 100%;
+    height: calc(100% - 90px);
+    overflow-y: auto;
+    font-family: 'acumin-pro', sans-serif;
+    background-color: #161616;
+}
+
+.main-content::-webkit-scrollbar-track {
+    background-color: rgb(0, 0, 0);
+}
+
+.main-content::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(0, 0, 0);
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background-color: #ED5C23;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, 0.2)), color-stop(.5, transparent), to(transparent));
+}
+
+.main-content .panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 10px 0;
+    border: none;
+}
+
+.panel-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.panel-50 {
+    width: 48%;
+}
+
+.panel-row button {
+    height: 80px;
+    background: #ED5C23;
+    font-size: 17px;
+    font-weight: 500;
+    width: 240px;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+}
+
+.panel-row button svg {
+    margin-bottom: 10px;
+}
+
+.panel-row button:hover {
+    transform: scale(1.05);
+    transition: .2s;
+}
+
+div #ajax-content {
+    width: 100%;
+    margin-top: 20px;
+    background: rgb(24, 23, 23);
+}
+
+div #ajax-content button {
+    background: #ED5C23;
+    color: white;
+}
+
+div #ajax-content button:hover {
+    transform: scale(1.10);
+    transition: .2s;
+}
+
+div #ajax-content label {
+    font-size: 15px;
+    color: white;
+}
+
+div #ajax-content table svg {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.dynamic-content button {
+    margin-left: 0px;
+    margin-bottom: 30px;
+}
+
+
+.dynamic-content .form-control {
+    background-color: #212121;
+    border-radius: 0px;
+    border: solid #ED5C23;
+}
+
+div.main-content-title {
+    padding: 5px 0;
+}
+
+div.main-content-title h2 {
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    font-family: 'acumin-pro', sans-serif;
+}
+
+div.imc-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    font-family: 'acumin-pro', sans-serif;
+}
+
+div.imc {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    padding: 11px 20px;
+    width: 100%;
+    height: 600px;
+    border-radius: 10px;
+    background-color: #212121;
+    text-align: center;
+    font-family: 'acumin-pro', sans-serif;
+}
+
+div.imc h2 {
+    font-weight: 400;
+    font-size: 25px;
+    color: white;
+    flex-direction: column;
+    position: absolute;
+    margin-bottom: 300px;
+    font-family: 'acumin-pro', sans-serif;
+}
+
+div.imc h2 span:nth-child(2) {
+    color: rgb(108, 226, 72);
+    font-weight: 600;
+}
+
+div.dashboard-flex-parent {
+    position: relative;
+    padding-left: 160px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: 'acumin-pro', sans-serif;
+}
+
+.dashboard-box {
+    position: relative;
+    flex-direction: row;
+    display: inline-block;
+}
+
+.dashboard-box-wrapper {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 5px;
+    margin-left: 12px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #353535;
+    font-family: 'acumin-pro', sans-serif;
+}
+
+.dashboard-box-wrapper:hover {
+    border: solid 1px #ED5C23;
+}
+
+div.dashboard-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: 'acumin-pro', sans-serif;
+}
+
+div.add-actions {
+    position: relative;
+    width: 100%;
+    height: 10%;
+    max-width: 695px;
+    margin-top: -70px;
+    color: white;
+    flex-direction: column;
+    font-family: 'acumin-pro', sans-serif;
+    
+    }
+
+div.add-actions p {
+    margin-left: 30px;
+    margin-right: 52px;
+    text-align: left;
+    margin-bottom: 1.6rem;
+    border-bottom: 1px solid #ED5C23;
+    font-family: 'acumin-pro', sans-serif;
+}
+
+div.buttons-add {
+    position: relative;
+   
+    width: 125%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: 'acumin-pro', sans-serif;
+}
+
+.img-imc {
+    position: fixed;
+}
+
+div.buttons-add button {
+     margin: 0px 0px 0px 0px;
+    margin-bottom: 1rem;
+    outline: thin dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: 0px;
+    font-family: 'acumin-pro', sans-serif;
+}
+
+div.dashboard-box:hover {
+    transition: 0.2s;
+    transform: scale(1.04);
+    font-family: 'acumin-pro', sans-serif;
+}
+
+div.dahboard-box:hover ~ box-icon {
+    background-color: #ED5C23;
+    color: #ED5C23;
+}
+
+div.box-icon {
+    width: 35px;
+    height: 35px;
+    background-color:#ED5C23;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    font-family: 'acumin-pro', sans-serif;
+}
+
+div.box-icon:hover {
+    background-color: #ED5C23; 
+} 
+
+div.box-icon svg {
+    font-size: 16px;
+}
+
+div.value {
+    margin-top: 10px;
+    font-weight: normal;
+    font-size: 12px;
+    color: #ED5C23;
+    font-family: 'acumin-pro', sans-serif;
+}
+
+div.type {
+    font-size: 12px;
+    margin-top: 5px;
+    font-family: 'acumin-pro', sans-serif;
+}
+
+div .type {
+    color: white;
+}
+
+
+@media screen and (max-width:1600px) {
+    div.dashboard-box {
+        width: 130px;
+        font-size: 12px;
+        max-width: 160px;
+        max-height: 126px;
+        padding-top: 10%;
+        position: relative;
+        margin: 5px;
+        padding-bottom: 10%;
+    }
+    
+    .dynamic-content button {
+        margin-left: 0px;
+    }
+
+    div.dashboard-kcal {
+        margin-bottom: 10px;
+        align-items: center;
+    }
+
+    div.dashboard-box {
+        margin-top: 15px;
+    }
+    div.dashboard-content svg {
+        margin-left: 230px;
+        margin-right: 230px;
+    }
+}
+
+@media screen and (max-width:1280px) {
+    .dashboard-flex-parent {
+        flex-wrap: wrap;
+    }
+    .dashboard-box {
+        padding: 0;
+        height: 230px;
+        margin: 10px;
+        padding-bottom: 20px;
+    }
+    div.box-icon {
+        margin-top: 12px;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    div.box-value-percentual {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .dynamic-content button {
+        margin-left: 0px;
+        margin-bottom: 30px;
+    }
+    
+    div.dashboard-content svg {
+        margin-left: 210px;
+        margin-right: 210px;
+    }
+
+    div.dashboard-content svg {
+        margin-left: 160px;
+        margin-right: 160px;
+    }
+
+    div.add-actions {
+        top: 618px;
+    }
+
+    div.buttons-add {
+        margin-left: 155px;
+    }
+}
+
+.status-imc-mobile {
+    display: none;
+}
+
+main {
+    display: block;
+    height: 100%;
+    background-color: #212121;
+    width: calc(100% - 300px);
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        display: block;
+        height: 100%;
+        background-color: #212121;
+        width: calc(100%);
+        z-index: 1;
+        position: relative;
+    }
+
+
+    main .main-content {
+        padding: 10px;
+        background-color: #212121;
+    }
+    .panel-row {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0px;
+    }
+    .panel-50 {
+        width: 100%;
+    }
+    .panel-row button {
+        height: 70px;
+        width: 210px;
+        background:  #ED5C23;
+        font-size: 12px;
+        font-weight: 500;
+        color: rgb(255, 255, 255);
+        border-radius:20px;
+    }
+    .panel-row button:hover {
+        transform: unset;
+    }
+    table {
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+    }
+    table th {
+        font-size: 8px;
+    }
+    table td {
+        font-size: 8px;
+    }
+    .dynamic-content {
+        padding: 0;
+    }
+    .dynamic-content form {
+        padding: 15px;
+    }
+    .dynamic-content form button {
+        width: 100%;
+    }
+    div.imc-parent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+        height: 100%;
+    }
+    div.imc {
+        height: 550px;
+        flex-direction: column;
+        border-radius: 10px;
+        background-color: #212121;
+        
+    }
+    div.imc h2 {
+        text-align: center;
+    }
+    div.imc h2 {
+        text-transform: uppercase;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: 700;
+        margin-right: 150px;
+    }
+    .status-imc-mobile {
+        display: flex;
+        margin-top: 0px;
+        margin-left: 150px;
+        margin-bottom: 278px;
+        width: 100;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 700;
+        color: rgb(107, 228, 70);
+        font-size: 600;
+    }
+    .status-imc-desktop {
+        display: none;
+    }
+
+    div.dashboard-content svg {
+        margin-left: 70px;
+        margin-right: 70px;
+    }
+
+    div.add-actions {
+        top: 600px;
+    }
+
+    div.buttons-add {
+        margin-left: 18px;
+    }
+    @media screen and (min-width: 375px) {
+        div.dashboard-box-wrapper {
+            margin-top: 20px;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 100%;
+        }
+
+        div.add-actions {
+            margin-top: -20px;
+        }
+
+        div.buttons-add button {
+            margin-right: 40px;
+        }
+    }
+}
