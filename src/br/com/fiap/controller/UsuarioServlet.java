@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,10 +25,6 @@ public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private UsuarioDAO dao;
-
-	public UsuarioServlet() {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public void init() throws ServletException {
@@ -64,4 +61,5 @@ public class UsuarioServlet extends HttpServlet {
 		}
 		req.getRequestDispatcher("register.jsp").forward(req, resp);
 	}
+
 }
