@@ -1,5 +1,8 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +10,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 </head>
 <body>
+<%=(new java.util.Date()).toLocaleString() %>
 	<div class="flex-dashboard">
 		<sidebar id="sidebar">
 		<div class="sidebar-title">
@@ -15,14 +19,13 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><i class="fas fa-chart-line"></i> <a
-					href="dashboard.jsp">DASHBOARD</a></li>
+				<li><i class="fas fa-chart-line"></i> <a href="dashboard.jsp">DASHBOARD</a></li>
 				<li><i class="fas fa-user-circle"></i> <a href="perfil.jsp">PERFIL</a>
 				</li>
 				<li><i class="fas fa-weight "></i> <a href="peso.jsp">PESO
 						E ALTURA</a></li>
-				<li class="selected"><i class="fas fa-heartbeat"></i> <a href="pressao.jsp">PRESSÃO
-						ARTERIAL</a></li>
+				<li class="selected"><i class="fas fa-heartbeat"></i> <a
+					href="pressao.jsp">PRESSÃO ARTERIAL</a></li>
 				<li><i class="fas fa-running"></i> <a href="atividade.jsp">ATIVIDADES
 						FÍSICAS</a></li>
 				<li><i class="fas fa-calculator"></i> <a href="imc.jsp">IMC</a>
@@ -40,6 +43,8 @@
 					class="fas fa-bars "> </i> <a href="login.jsp"><i
 					class="fas fa-sign-out-alt "></i> &nbsp; Logout</a>
 			</header>
+			
+			
 			<div class="main-content">
 				<div class="panel-row">
 					<button class="panel panel-50" a-view="cadastrarPressao.jsp"
@@ -51,22 +56,26 @@
 				<div class="dynamic-content">
 					<table class="table table-dark">
 						<thead>
+
 							<tr>
+								<th scope="col">ID</th>
 								<th scope="col">Data</th>
 								<th scope="col">mmHg</th>
-								<th scope="col">Idade</th>
-								<th scope="col">Editar</th>
-								<th scope="col">Deletar</th>
+								<th scope="col">Ações</th>
 							</tr>
+
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">20/06/2020</th>
-								<td>120/80</td>
-								<td>24 anos</td>
-								<td><i class="fas fa-edit"></i></td>
-								<td><i class="fas fa-trash-alt"></i></td>
-							</tr>
+							<c:forEach items="${pressoes }" var="pressao">
+								<tr>
+									<td>${pressao.idPressaoArterial}</td>
+									<td><fmt:formatDate value="${pressao.dtCadastro.time }"
+											pattern="dd/MM/yyyy" /></td>
+									<td>${pressao.nrSistolica }/${pressao.nrDiastolica }</td>
+									<td><i class="fas fa-edit"></i>&nbsp;&nbsp;&nbsp; <i
+										class="fas fa-trash-alt"></i></td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

@@ -31,6 +31,13 @@ public class UsuarioServlet extends HttpServlet {
 		super.init();
 		dao = DAOFactory.getUsuarioDAO();
 	}
+	
+//	@Override
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		List<Usuario> listaUsuario = dao.listarTodos();
+//		request.setAttribute("usuarios", listaUsuario);
+//		request.getRequestDispatcher(".jsp").forward(request, response);
+//		}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
