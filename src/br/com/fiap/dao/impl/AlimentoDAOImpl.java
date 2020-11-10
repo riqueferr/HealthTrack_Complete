@@ -18,7 +18,7 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 	private Connection conexao;
 
 	@Override
-	public List<Alimento> listarTodos()  {
+	public List<Alimento> listarTodos() {
 		List<Alimento> lista = new ArrayList<Alimento>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -102,7 +102,24 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 
 	@Override
 	public void remover(int idAlimento) throws DBException {
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = null;
+
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "DELETE FROM T_HTL_ALMT WHERE ID_ALMT = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idAlimento);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}
 

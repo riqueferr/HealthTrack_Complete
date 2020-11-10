@@ -61,7 +61,7 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 	}
 
 	@Override
-	public void cadastrar(PressaoArterial pressaoArterial) throws DBException{
+	public void cadastrar(PressaoArterial pressaoArterial) throws DBException {
 		PreparedStatement stmt = null;
 
 		try {
@@ -90,15 +90,31 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 	}
 
 	@Override
-	public void atualizar(PressaoArterial pressaoArterial) throws DBException{
+	public void atualizar(PressaoArterial pressaoArterial) throws DBException {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void remover(int idPressaoArterial) throws DBException{
-		// TODO Auto-generated method stub
+	public void remover(int idPressaoArterial) throws DBException {
+		PreparedStatement stmt = null;
 
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "DELETE FROM T_HTL_PRESSAO WHERE ID_PRESSAO = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idPressaoArterial);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override

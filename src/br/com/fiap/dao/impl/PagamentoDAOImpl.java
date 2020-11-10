@@ -110,7 +110,24 @@ public class PagamentoDAOImpl implements PagDAO {
 
 	@Override
 	public void remover(int idPagamento) throws DBException{
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = null;
+
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "DELETE FROM T_HTL_PAG WHERE ID_PAG = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idPagamento);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}
 

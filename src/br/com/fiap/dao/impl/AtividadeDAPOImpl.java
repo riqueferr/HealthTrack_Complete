@@ -109,8 +109,24 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 
 	@Override
 	public void remover(int idAtividade) throws DBException{
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = null;
 
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "DELETE FROM T_HTL_ATV WHERE ID_ATV = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idAtividade);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override

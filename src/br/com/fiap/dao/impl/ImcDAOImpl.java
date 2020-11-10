@@ -99,7 +99,24 @@ public class ImcDAOImpl implements ImcDAO {
 
 	@Override
 	public void remover(int idImc) throws DBException{
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = null;
+
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "DELETE FROM T_HTL_IMC WHERE ID_IMC = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idImc);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 

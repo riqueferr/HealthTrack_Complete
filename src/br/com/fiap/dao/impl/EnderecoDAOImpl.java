@@ -63,7 +63,7 @@ public class EnderecoDAOImpl implements EnderecoDAO {
 	}
 
 	@Override
-	public void cadastrar(Endereco endereco) throws DBException{
+	public void cadastrar(Endereco endereco) throws DBException {
 		PreparedStatement stmt = null;
 
 		try {
@@ -79,7 +79,7 @@ public class EnderecoDAOImpl implements EnderecoDAO {
 			stmt.setString(3, endereco.getNmLogradouro());
 			stmt.setString(4, endereco.getDsEndereco());
 			stmt.setString(5, endereco.getNmUf());
-			stmt.setString(6,endereco.getNmCidade());
+			stmt.setString(6, endereco.getNmCidade());
 			stmt.setString(7, endereco.getNmBairro());
 			stmt.setString(8, endereco.getDsComplemento());
 			stmt.setString(9, endereco.getNrEndereco());
@@ -98,15 +98,31 @@ public class EnderecoDAOImpl implements EnderecoDAO {
 	}
 
 	@Override
-	public void atualizar(Endereco endereco) throws DBException{
+	public void atualizar(Endereco endereco) throws DBException {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void remover(int idEndereco) throws DBException{
-		// TODO Auto-generated method stub
+	public void remover(int idEndereco) throws DBException {
+		PreparedStatement stmt = null;
 
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "DELETE FROM T_HTL_ENDERECO WHERE ID_ENDERECO = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idEndereco);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
