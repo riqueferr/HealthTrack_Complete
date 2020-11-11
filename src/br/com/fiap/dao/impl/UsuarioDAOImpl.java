@@ -66,7 +66,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 		try {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
-			String sql = "UPDATE T_HTL_USUARIO SET NM_NOME = ?, NM_SOBRENOME = ?, DS_EMAIL = ?, DS_SENHA = ?, DT_NASCIMENTO = ?, DT_CADASTRO = ? WHERE ID_USUARIO = ?";
+			String sql = "UPDATE T_HTL_USUARIO SET NM_NOME = ?, NM_SOBRENOME = ?, "
+					+ "DS_EMAIL = ?, DS_SENHA = ?, DT_NASCIMENTO = ?, DT_CADASTRO = ? WHERE ID_USUARIO = ?";
 			stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, usuario.getNome());
 			stmt.setString(2, usuario.getSobrenome());

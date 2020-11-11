@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,12 +18,11 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><i class="fas fa-chart-line"></i> <a
-					href="dashboard.jsp">DASHBOARD</a></li>
+				<li><i class="fas fa-chart-line"></i> <a href="dashboard.jsp">DASHBOARD</a></li>
 				<li><i class="fas fa-user-circle"></i> <a href="perfil.jsp">PERFIL</a>
 				</li>
-				<li class="selected"><i class="fas fa-weight "></i> <a href="peso.jsp">PESO
-						E ALTURA</a></li>
+				<li class="selected"><i class="fas fa-weight "></i> <a
+					href="peso.jsp">PESO E ALTURA</a></li>
 				<li><i class="fas fa-heartbeat"></i> <a href="pressao.jsp">PRESSÃO
 						ARTERIAL</a></li>
 				<li><i class="fas fa-running"></i> <a href="atividade.jsp">ATIVIDADES
@@ -46,7 +48,7 @@
 			<div class="main-content">
 				<div class="panel-row">
 					<button class="panel panel-50" a-view="cadastrarPeso.jsp"
-					onclick="fetchContent(this)">
+						onclick="fetchContent(this)">
 						<i class="fas fa-plus"></i> Adicionar Peso
 					</button>
 
@@ -60,18 +62,23 @@
 								<th scope="col">Data</th>
 								<th scope="col">Peso</th>
 								<th scope="col">Altura</th>
+								<th scope="col">ID</th>
 								<th scope="col">Editar</th>
 								<th scope="col">Deletar</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">20/06/2020</th>
-								<td>82kg</td>
-								<td>180cm</td>
-								<td><i class="fas fa-edit"></i></td>
-								<td><i class="fas fa-trash-alt"></i></td>
-							</tr>
+							<c:forEach items="${imcs }" var="imc">
+								<tr>
+									<td><fmt:formatDate value="${imc.dtCadastro.time }"
+											pattern="dd/MM/yyyy" /></td>
+									<td>${imc.peso }</td>
+									<td>${imc.altura }</td>
+									<td>${imc.idImc }</td>
+									<td><i class="fas fa-edit"></i></td>
+									<td><i class="fas fa-trash-alt"></i></td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

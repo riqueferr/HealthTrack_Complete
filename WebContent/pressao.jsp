@@ -10,7 +10,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 </head>
 <body>
-<%=(new java.util.Date()).toLocaleString() %>
+
 	<div class="flex-dashboard">
 		<sidebar id="sidebar">
 		<div class="sidebar-title">

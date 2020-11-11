@@ -21,13 +21,13 @@
 				<div class="alert alert-success">${mensagemUsuario }</div>
 			</c:if>
 			<c:if test="${not empty mensagemUsuario }">
-				<div class="alert alert-success">${erroUsuario }</div>
+				<div class="alert alert-danger">${erroUsuario }</div>
 			</c:if>
 			<form action="usuario" method="post">
-				<input type="hidden" value="cadastrar" name="acao">
+				<input type="hidden" value="cadastrar">
 				<div class="form-group">
-					<label for="id-nome"></label> <input type="text" class="form-control"
-						id="id-nome" placeholder="Nome" name="nome">
+					<label for="id-nome"></label> <input type="text"
+						class="form-control" id="id-nome" placeholder="Nome" name="nome">
 				</div>
 				<div class="form-group">
 					<label for="id-sobrenome"></label> <input type="text"
@@ -37,9 +37,8 @@
 				<div class="form-group">
 					<label for="id-dataNasc"></label> <input type="text"
 						class="form-control" id="id-dataNasc"
-						placeholder="Data de Nascimento" name="DtNasc">
+						placeholder="Data de Nascimento" name="dtNasc">
 				</div>
-
 				<div class="form-group">
 					<label for="id-email"></label> <input type="text"
 						class="form-control" id="id-email" aria-describedby="emailHelp"
@@ -50,15 +49,9 @@
 						class="form-control" id="id-senha" placeholder="Digite sua senha"
 						name="senha">
 				</div>
-				<div class="form-group">
-					<label for="id-dtCadastro"></label> <input type="text"
-						class="form-control" id="id-dtCadastro" placeholder="Dt cadastro"
-						name="dtCadastro">
-				</div>
-				<button type="button" type="submit">Cadastrar</button>
+				<input type="button" type="submit" value="Cadastrar">
 			</form>
 		</div>
-
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

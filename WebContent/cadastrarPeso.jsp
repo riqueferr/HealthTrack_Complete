@@ -7,22 +7,38 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="dynamic-content">
-		<form>
-			<div class="form-group">
-				<label for="weight">Novo peso</label> <input type="text"
-					class="form-control" id="weight">
-			</div>
-			<div class="form-group">
-				<label for="height">Nova altura</label> <input type="text"
-					class="form-control" id="height">
-			</div>
-			<div class="form-group">
-				<label for="height">Data</label> <input type="date"
-					class="form-control" id="height">
-			</div>
-			<button type="submit" class="btn">Cadastrar</button>
-		</form>
+	<div class="container">
+		<div class="dynamic-content">
+			<form method="post" action="imc">
+				<div class="row">
+					<div class="col-md-2">
+						<div class="form-group">
+							<label for="id_peso">Novo peso</label> <input type="text"
+								class="form-control" id="id_peso" name="peso">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<label for="id_altura">Nova altura</label> <input type="text"
+								class="form-control" id="id_altura" name="altura">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="id_usuario">ID Usuario</label> <input type="text"
+								class="form-control" id="id_usuario" name="idUsuario">
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="id_valor">IMC</label> <input type="text"
+									class="form-control" id="id_valor" name="valor">
+							</div>
+						</div>
+					</div>
+				</div>
+				<button type="submit" class="btn">Cadastrar</button>
+			</form>
+		</div>
 	</div>
 </body>
 </html>

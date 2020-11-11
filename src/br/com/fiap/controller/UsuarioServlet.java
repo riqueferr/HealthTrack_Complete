@@ -32,12 +32,6 @@ public class UsuarioServlet extends HttpServlet {
 		dao = DAOFactory.getUsuarioDAO();
 	}
 	
-//	@Override
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		List<Usuario> listaUsuario = dao.listarTodos();
-//		request.setAttribute("usuarios", listaUsuario);
-//		request.getRequestDispatcher(".jsp").forward(request, response);
-//		}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -48,13 +42,10 @@ public class UsuarioServlet extends HttpServlet {
 			String sobrenome = req.getParameter("sobrenome");
 			String email = req.getParameter("email");
 			String senha = req.getParameter("senha");
-
 			Date dataf = format.parse(req.getParameter("dtNasc"));
 			java.sql.Date dtNasc = new java.sql.Date(dataf.getTime());
-
 			Calendar dtCadastro = Calendar.getInstance();
-			dtCadastro.setTime(format.parse(req.getParameter("dtCadastro")));
-
+ 
 			Usuario usuario = new Usuario(0, nome, sobrenome, email, senha, dtNasc, dtCadastro);
 			dao.cadastrar(usuario);
 
@@ -69,4 +60,17 @@ public class UsuarioServlet extends HttpServlet {
 		req.getRequestDispatcher("register.jsp").forward(req, resp);
 	}
 
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+	
+	
+	
 }
+
+
+
+	

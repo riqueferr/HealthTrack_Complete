@@ -91,7 +91,30 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 
 	@Override
 	public void atualizar(PressaoArterial pressaoArterial) throws DBException {
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = null;
+
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "UPDATE T_HTL_USUARIO SET NR_SISTOLICA = ?, NR_DIASTOLICA = ?,"
+					+ " DT_CADASTRO = ? WHERE ID_PRESSAO = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, pressaoArterial.getNrSistolica());
+			stmt.setInt(2, pressaoArterial.getNrDiastolica());
+			java.sql.Date dataAtual = new java.sql.Date(pressaoArterial.getDtCadastro().getTimeInMillis());
+			stmt.setDate(3, dataAtual);
+			stmt.setInt(4, pressaoArterial.getIdPressaoArterial());
+			stmt.executeQuery();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}
 
