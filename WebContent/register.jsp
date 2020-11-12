@@ -49,7 +49,7 @@
 						class="form-control" id="id-senha" placeholder="Digite sua senha"
 						name="senha">
 				</div>
-				<input type="button" type="submit" value="Cadastrar">
+				<button type="submit">Entrar</button>
 			</form>
 		</div>
 	</div>

@@ -16,5 +16,7 @@ public interface UsuarioDAO {
 	    public void remover(int idUsuario) throws DBException;
 	    
 	    public Usuario buscarPorId(int idUsuario);
+	    
+	    boolean validarUsuario(Usuario usuario);
 	  
 }

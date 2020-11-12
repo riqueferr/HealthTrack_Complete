@@ -3,6 +3,8 @@ package br.com.fiap.model;
 import java.sql.Date;
 import java.util.Calendar;
 
+import br.com.fiap.util.CriptografiaUtils;
+
 public class Usuario {
 	
 	private Integer idUsuario;
@@ -33,6 +35,12 @@ public class Usuario {
     
 	public Usuario() {
 		super();
+	}
+	
+	public Usuario (String email, String senha) {
+		super();
+		this.email = email;
+		setSenha(senha);
 	}
 
 
@@ -82,7 +90,11 @@ public class Usuario {
 
 
 	public void setSenha(String senha) {
-		this.senha = senha;
+		try {
+		this.senha = CriptografiaUtils.criptografar(senha);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 

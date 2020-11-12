@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,14 +24,13 @@
 				</li>
 				<li><i class="fas fa-weight "></i> <a href="peso.jsp">PESO
 						E ALTURA</a></li>
-				<li><i class="fas fa-heartbeat"></i> <a
-					href="pressao.jsp">PRESSÃO ARTERIAL</a></li>
-				<li><i class="fas fa-running"></i> <a
-					href="atividade.jsp">ATIVIDADES FÍSICAS</a></li>
+				<li><i class="fas fa-heartbeat"></i> <a href="pressao.jsp">PRESSÃO
+						ARTERIAL</a></li>
+				<li><i class="fas fa-running"></i> <a href="atividade.jsp">ATIVIDADES
+						FÍSICAS</a></li>
 				<li><i class="fas fa-calculator"></i> <a href="imc.jsp">IMC</a>
 				</li>
-				<li><i class="fas fa-utensils"></i> <a
-					href="alimento.jsp">ALIMENTOS</a></li>
+				<li><i class="fas fa-utensils"></i> <a href="alimento.jsp">ALIMENTOS</a></li>
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
 					<a href="login.jsp">LOGOUT</a></li>
 			</ul>

@@ -13,6 +13,7 @@ import br.com.fiap.conexao.ConexaoBDManager;
 import br.com.fiap.dao.UsuarioDAO;
 import br.com.fiap.exception.DBException;
 import br.com.fiap.model.Usuario;
+import oracle.jdbc.connector.OracleConnectionManager;
 
 public class UsuarioDAOImpl implements UsuarioDAO {
 
@@ -61,7 +62,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public void atualizar(Usuario usuario) throws DBException{
+	public void atualizar(Usuario usuario) throws DBException {
 		PreparedStatement stmt = null;
 
 		try {
@@ -93,7 +94,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public void remover(int idUsuario) throws DBException{
+	public void remover(int idUsuario) throws DBException {
 		PreparedStatement stmt = null;
 
 		try {
@@ -163,7 +164,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public void cadastrar(Usuario usuario) throws DBException{
+	public void cadastrar(Usuario usuario) throws DBException {
 		PreparedStatement stmt = null;
 
 		try {
@@ -192,4 +193,38 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 	}
 
+	@Override
+	public boolean validarUsuario(Usuario usuario) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "SELECT * FROM T_HTL_USUARIO"
+					+ "	WHERE DS_EMAIL = ?"
+					+ "	AND DS_SENHA = ?";
+			stmt = conexao.prepareStatement(sql);
+			
+			stmt.setString(1, usuario.getEmail());
+			stmt.setString(2, usuario.getSenha());
+			rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				rs.close();
+				conexao.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	
 }

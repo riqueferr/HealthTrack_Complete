@@ -28,12 +28,6 @@
 							<label for="id_usuario">ID Usuario</label> <input type="text"
 								class="form-control" id="id_usuario" name="idUsuario">
 						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label for="id_valor">IMC</label> <input type="text"
-									class="form-control" id="id_valor" name="valor">
-							</div>
-						</div>
 					</div>
 				</div>
 				<button type="submit" class="btn">Cadastrar</button>
