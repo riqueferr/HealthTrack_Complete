@@ -20,7 +20,7 @@
 			<c:if test="${not empty mensagemUsuario }">
 				<div class="alert alert-success">${mensagemUsuario }</div>
 			</c:if>
-			<c:if test="${not empty mensagemUsuario }">
+			<c:if test="${not empty erroUsuario }">
 				<div class="alert alert-danger">${erroUsuario }</div>
 			</c:if>
 			<form action="usuario" method="post">
