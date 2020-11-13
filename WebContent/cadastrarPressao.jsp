@@ -9,22 +9,18 @@
 </head>
 <body>
 <div class="dynamic-content">
-    <form>
+    <form method="post" action="pressoes">
         <div class="form-group">
-            <label for="weight">Pressão Sistólica</label>
-            <input type="number" class="form-control" id="weight">
+            <label for="id_sistolica">Pressão Sistólica</label>
+            <input id="id_sistolica" type="number" class="form-control" name="sistolica">
         </div>
         <div class="form-group">
-            <label for="weight">Pressão Diastólica</label>
-            <input type="number" class="form-control" id="weight">
+            <label for="id_diastolica">Pressão Diastólica</label>
+            <input id="id_diastolica" type="number" class="form-control" name="diastolica">
         </div>
         <div class="form-group">
-            <label for="weight">Idade</label>
-            <input type="number" class="form-control" id="weight">
-        </div>
-        <div class="form-group">
-            <label for="weight">Data</label>
-            <input type="date" class="form-control" id="weight">
+            <label for="id_usuario">ID do usuário</label>
+            <input id="id_usuario" type="number" class="form-control" name="idusuario">
         </div>
         
         <button type="submit" class="btn">Cadastrar</button>
