@@ -200,11 +200,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 		try {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
-			String sql = "SELECT * FROM T_HTL_USUARIO"
-					+ "	WHERE DS_EMAIL = ?"
-					+ "	AND DS_SENHA = ?";
+			String sql = "SELECT * FROM T_HTL_USUARIO WHERE DS_EMAIL = ? AND DS_SENHA = ?;";
 			stmt = conexao.prepareStatement(sql);
-			
 			stmt.setString(1, usuario.getEmail());
 			stmt.setString(2, usuario.getSenha());
 			rs = stmt.executeQuery();

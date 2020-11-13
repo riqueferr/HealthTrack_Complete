@@ -18,7 +18,8 @@
 				</div>
 				<c:if test="${empty user }">
 					<span class="navbar-text text-danger" style="margin-right: 10px">
-						${erro } </span>
+						${erro } 
+					</span>
 					<form action="login" method="post">
 						<div class="form-group">
 							<input type="text" class="form-control" name="email"
@@ -37,11 +38,11 @@
 						</div>
 					</form>
 				</c:if>
-				<c:if test="${not empty user }">
-					<span class="navbar-text"> ${user } <a href="login"
+				<%-- <c:if test="${not empty user }">
+					<span class="navbar-text"> ${user } <a href="login.jsp"
 						class="btn btn-outline-primary my-2 my-sm-0">Sair</a>
 					</span>
-				</c:if>
+				</c:if> --%>
 			</div>
 		</div>
 
