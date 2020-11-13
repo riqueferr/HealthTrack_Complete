@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="resources/plugins/fontawesome/css/all.css">
 <link rel="shortcut icon" href="resources/images/ico (1).ico"/>
 
-<meta charset="UTF-8">
 <title>Health Track</title>
 </head>
 <body>
