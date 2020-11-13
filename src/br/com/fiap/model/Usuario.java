@@ -26,7 +26,7 @@ public class Usuario {
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.email = email;
-		this.senha = senha;
+		setSenha(senha);
 		this.dtNasc = dtNasc;
 		this.dtCadastro = dtCadastro;
 	}

@@ -26,9 +26,14 @@ public class LoginServlet extends HttpServlet {
 	private UsuarioDAO dao;
 	private EmailBO bo;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+
+	public void init() throws ServletException {
+		super.init();
+		dao = DAOFactory.getUsuarioDAO();
+		bo = new EmailBO();
+	}
+	
+	
 	public LoginServlet() {
 		super();
 		dao = DAOFactory.getUsuarioDAO();
@@ -51,7 +56,6 @@ public class LoginServlet extends HttpServlet {
 				bo.enviarEmail(email, "Login Realizado!", mensagem);
 			} catch (EmailException e) {
 				e.printStackTrace();
-				;
 			}
 		} else {
 			request.setAttribute("erro", "Usuário e/ou senha incorreto(s)...");
@@ -63,6 +67,6 @@ public class LoginServlet extends HttpServlet {
 //			throws ServletException, IOException {
 //		HttpSession session = request.getSession();
 //		session.invalidate();
-//		request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+//		request.getRequestDispatcher("login.jsp").forward(request, response);
 //	}
 }
