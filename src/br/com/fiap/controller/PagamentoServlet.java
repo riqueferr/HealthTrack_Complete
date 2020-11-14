@@ -9,34 +9,52 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.DataBindingException;
 
 import br.com.fiap.DAOFactory.DAOFactory;
-import br.com.fiap.dao.AlimentoDAO;
-import br.com.fiap.dao.PeriodoAlimentoDAO;
+import br.com.fiap.dao.PagDAO;
+import br.com.fiap.dao.TipoPagamentoDAO;
 import br.com.fiap.exception.DBException;
 import br.com.fiap.model.Alimento;
+import br.com.fiap.model.Pagamento;
 import br.com.fiap.model.PeriodoAlimento;
-import br.com.fiap.model.PressaoArterial;
+import br.com.fiap.model.TipoPagamento;
 
-@WebServlet("/alimento")
-public class AlimentoServlet extends HttpServlet {
+/**
+ * Servlet implementation class PagamentoServlet
+ */
+@WebServlet("/pagamento")
+public class PagamentoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	
+	private PagDAO dao;
+	private TipoPagamentoDAO tipoPagDAO;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public PagamentoServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	private AlimentoDAO dao;
-	private PeriodoAlimentoDAO periodoDao;
-
-	public AlimentoServlet() {
-		super();
-	}
-
+    
+    
+    
 	@Override
 	public void init() throws ServletException {
+		// TODO Auto-generated method stub
 		super.init();
-		dao = DAOFactory.getAlimentoDAO();
-		periodoDao = DAOFactory.getPeriodoAlimento();
+		dao = DAOFactory.getPagDAO();
+		tipoPagDAO = DAOFactory.getTipoPagamentoDAO();
 	}
 
+
+
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String acao = request.getParameter("acao");
@@ -55,30 +73,30 @@ public class AlimentoServlet extends HttpServlet {
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Alimento> listaAlimento = dao.listarTodos();
-		request.setAttribute("alimentos", listaAlimento);
-		request.getRequestDispatcher("alimento.jsp").forward(request, response);
+		List<Pagamento> listaPagamento = dao.listarTodos();
+		request.setAttribute("pagamentos", listaPagamento);
+		request.getRequestDispatcher("pagamentos.jsp").forward(request, response);
 	}
 
 	private void abrirFormCadastro(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<PeriodoAlimento> listaPeriodo = periodoDao.listarTodos();
-		carregarOpcoesPeriodo(request);
-		request.getRequestDispatcher("alimento.jsp").forward(request, response);
+		List<TipoPagamento> listaTipoPag = tipoPagDAO.listarTodos();
+		carregarOpcoesPagamento(request);
+		request.getRequestDispatcher("pagamentos.jsp").forward(request, response);
 	}
 
 	private void abrirFormEdicao(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("codigo"));
-		Alimento alimento = dao.buscarPorId(id);
-		request.setAttribute("alimento", alimento);
-		request.getRequestDispatcher("edicao-alimento.jsp").forward(request, response);
+		Pagamento pagamento = dao.buscarPorId(id);
+		request.setAttribute("pagamento", pagamento);
+		request.getRequestDispatcher("edicao-pagamento.jsp").forward(request, response);
 		;
 	}
 
-	private void carregarOpcoesPeriodo(HttpServletRequest request) {
-		List<PeriodoAlimento> lista = periodoDao.listarTodos();
-		request.setAttribute("periodos", lista);
+	private void carregarOpcoesPagamento(HttpServletRequest request) {
+		List<TipoPagamento> lista = tipoPagDAO.listarTodos();
+		request.setAttribute("tipos", lista);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -119,20 +137,20 @@ public class AlimentoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			String nmAlimento = request.getParameter("nmAlimento");
-			Integer qtdeAlimento = Integer.parseInt(request.getParameter("qtdeAlimento"));
-			Integer qtdeCaloria = Integer.parseInt(request.getParameter("qtdeCaloria"));
+			Integer qtdeParcela = Integer.parseInt(request.getParameter("qtdeParcela"));
+			Double vlTotal = Double.parseDouble(request.getParameter("vlTotal"));
 			Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
-			Integer idPeriodo = Integer.parseInt(request.getParameter("periodo"));
+			Integer idTipo = Integer.parseInt(request.getParameter("periodo"));
 			Calendar dtCadastro = Calendar.getInstance();
 
-			PeriodoAlimento periodo = new PeriodoAlimento();
-			periodo.setIdPeriodo(idPeriodo);
-
-			Alimento alimento = new Alimento(0, nmAlimento, qtdeAlimento, qtdeCaloria, idUsuario, dtCadastro);
-			alimento.setPeriodoAlimento(periodo);
-
-			dao.cadastrar(alimento);
-
+			TipoPagamento tp = new TipoPagamento();
+			tp.setIdTipo(idTipo);
+			
+			Pagamento pagamento = new Pagamento(0, qtdeParcela, vlTotal, idUsuario, dtCadastro);
+			pagamento.setTipoPagamento(tp);
+			
+			dao.cadastrar(pagamento);
+			
 			request.setAttribute("msg", "Alimento cadastrado!");
 		} catch (DBException db) {
 			db.printStackTrace();
@@ -143,4 +161,5 @@ public class AlimentoServlet extends HttpServlet {
 		}
 		abrirFormCadastro(request, response);
 	}
+
 }
