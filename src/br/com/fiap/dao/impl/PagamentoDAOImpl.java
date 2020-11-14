@@ -11,7 +11,10 @@ import java.util.List;
 import br.com.fiap.conexao.ConexaoBDManager;
 import br.com.fiap.dao.PagDAO;
 import br.com.fiap.exception.DBException;
+import br.com.fiap.model.Alimento;
 import br.com.fiap.model.Pagamento;
+import br.com.fiap.model.PeriodoAlimento;
+import br.com.fiap.model.TipoPagamento;
 
 public class PagamentoDAOImpl implements PagDAO {
 
@@ -42,14 +45,16 @@ public class PagamentoDAOImpl implements PagDAO {
 				Integer idPagamento = rs.getInt("ID_PAG");
 				Integer qtdeParcela = rs.getInt("QT_PARCELA");
 				Double vlTotal = rs.getDouble("VL_TOTAL");
-				Integer idTipoPag = rs.getInt("T_HTL_TIPO_ID_TIPO");
-				String dsTipoPag = rs.getString("NM_TIPOPAG");
 				Integer idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
 				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
 				Calendar dtCadastro = Calendar.getInstance();
 				dtCadastro.setTimeInMillis(dtCad.getTime());
+				Integer idTipoPag = rs.getInt("T_HTL_TIPO_ID_TIPO");
+				String dsTipoPag = rs.getString("NM_TIPOPAG");
 
-				Pagamento pagamento = new Pagamento(idPagamento,qtdeParcela, vlTotal, idTipoPag, dsTipoPag, idUsuario, dtCadastro);
+				Pagamento pagamento = new Pagamento(idPagamento,qtdeParcela, vlTotal, idUsuario, dtCadastro);
+				TipoPagamento tp = new TipoPagamento(idTipoPag, dsTipoPag);
+				pagamento.setTipoPagamento(tp);
 				
 				lista.add(pagamento);
 			}
@@ -83,7 +88,7 @@ public class PagamentoDAOImpl implements PagDAO {
 
 			stmt.setInt(1, pagamento.getQtdeParcela());
 			stmt.setDouble(2, pagamento.getVlTotal());
-			stmt.setInt(3, pagamento.getIdTipoPag());
+			stmt.setInt(3, pagamento.getTipoPagamento().getIdTipo());
 			stmt.setInt(4, pagamento.getIdUsuario());
 			java.sql.Date dataAtual = new java.sql.Date(pagamento.getDtCadastro().getTimeInMillis());
 			stmt.setDate(5, dataAtual);
