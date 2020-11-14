@@ -23,13 +23,13 @@ public class TipoPagamentoDAOImpl implements TipoPagamentoDAO {
 
 		try {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
-			String sql = "";
+			String sql = "SELECT * FROM T_HTL_TIPO";
 			stmt = conexao.prepareStatement(sql);
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				int codigo = rs.getInt("CD");
-				String descricao = rs.getString("DS");
+				int codigo = rs.getInt("ID_TIPO");
+				String descricao = rs.getString("NM_TIPOPAG");
 				TipoPagamento tp = new TipoPagamento(codigo, descricao);
 				lista.add(tp);
 			}

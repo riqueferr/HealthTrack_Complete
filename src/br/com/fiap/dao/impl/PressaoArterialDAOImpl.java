@@ -142,7 +142,7 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 
 	@Override
 	public PressaoArterial buscarPorId(int codigo) {
-		
+
 		PressaoArterial pressaoArterial = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -152,19 +152,21 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, codigo);
 			rs = stmt.executeQuery();
-			
-			Integer idPressaoArterial = rs.getInt("ID_PRESSAO");
-			Integer nrSistolica = rs.getInt("NR_SISTOLICA");
-			Integer nrDiastolica = rs.getInt("NR_DIASTOLICA");
-			java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
-			Calendar dtCadastro = Calendar.getInstance();
-			dtCadastro.setTimeInMillis(dtCad.getTime());
-			Integer idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
 
-			
-			pressaoArterial = new PressaoArterial (idPressaoArterial, nrSistolica, nrDiastolica, dtCadastro, idUsuario);
-			
-			
+			if (rs.next()) {
+
+				Integer idPressaoArterial = rs.getInt("ID_PRESSAO");
+				Integer nrSistolica = rs.getInt("NR_SISTOLICA");
+				Integer nrDiastolica = rs.getInt("NR_DIASTOLICA");
+				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
+				Calendar dtCadastro = Calendar.getInstance();
+				dtCadastro.setTimeInMillis(dtCad.getTime());
+				Integer idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
+
+				pressaoArterial = new PressaoArterial(idPressaoArterial, nrSistolica, nrDiastolica, dtCadastro,
+						idUsuario);
+
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -176,7 +178,7 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return pressaoArterial;
-	} 
-} 
+	}
+}
