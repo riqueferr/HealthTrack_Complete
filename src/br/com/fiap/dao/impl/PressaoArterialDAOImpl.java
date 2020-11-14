@@ -141,9 +141,42 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 	}
 
 	@Override
-	public PressaoArterial buscarPorId(int idPressaoArterial) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public PressaoArterial buscarPorId(int codigo) {
+		
+		PressaoArterial pressaoArterial = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "SELECT * FROM T_HTL_PRESSAO WHERE ID_PRESSAO = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, codigo);
+			rs = stmt.executeQuery();
+			
+			Integer idPressaoArterial = rs.getInt("ID_PRESSAO");
+			Integer nrSistolica = rs.getInt("NR_SISTOLICA");
+			Integer nrDiastolica = rs.getInt("NR_DIASTOLICA");
+			java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
+			Calendar dtCadastro = Calendar.getInstance();
+			dtCadastro.setTimeInMillis(dtCad.getTime());
+			Integer idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
 
-}
+			
+			pressaoArterial = new PressaoArterial (idPressaoArterial, nrSistolica, nrDiastolica, dtCadastro, idUsuario);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				rs.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return pressaoArterial;
+	} 
+} 
