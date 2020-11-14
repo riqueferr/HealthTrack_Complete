@@ -4,9 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import br.com.fiap.DAOFactory.DAOFactory;
+import br.com.fiap.dao.PeriodoAlimentoDAO;
 import br.com.fiap.dao.impl.AlimentoDAOImpl;
 import br.com.fiap.exception.DBException;
 import br.com.fiap.model.Alimento;
+import br.com.fiap.model.PeriodoAlimento;
 
 public class TesteAlimento {
 
@@ -60,14 +63,22 @@ public class TesteAlimento {
 //		alimentoE.setQtdeCaloria(273);
 //		dao.cadastrar(alimentoE);
 //		System.out.print("Cadastrado " + alimentoE);
-
-		List<Alimento> lista = dao.listarTodos();
-		for (Alimento alimentos : lista) {
-			System.out.println("ID: " + alimentos.getIdAlimento() + " - Alimento: " + alimentos.getNmAlimento()
-					+ " - Qtde: " + alimentos.getQtdeAlimento() + " - Calorias: " + alimentos.getQtdeCaloria()
-					+ " ID do Usuário: " + alimentos.getIdUsuario() + " - Período: " + alimentos.getIdPeriodo()
-					+ " - Data de Cadastro: " + formatacaoData.format(alimentos.getDtCadastro().getTime()));
-		}
+//
+//		List<Alimento> lista = dao.listarTodos();
+//		for (Alimento alimentos : lista) {
+//			System.out.println("ID: " + alimentos.getIdAlimento() + " - Alimento: " + alimentos.getNmAlimento()
+//					+ " - Qtde: " + alimentos.getQtdeAlimento() + " - Calorias: " + alimentos.getQtdeCaloria()
+//					+ " ID do Usuário: " + alimentos.getIdUsuario() + " - Período: " + alimentos.getIdPeriodo()
+//					+ " - Data de Cadastro: " + formatacaoData.format(alimentos.getDtCadastro().getTime()));
+//		}
+		
+		PeriodoAlimentoDAO dao1 = DAOFactory.getPeriodoAlimento();
+				List<PeriodoAlimento> lista1 = dao1.listarTodos();
+				for (PeriodoAlimento p : lista1) {
+					System.out.println(p.getDsPeriodo());
+				}
 	}
+	
+	
 
 }

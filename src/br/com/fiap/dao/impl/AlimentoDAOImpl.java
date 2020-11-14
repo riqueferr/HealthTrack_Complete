@@ -12,6 +12,7 @@ import br.com.fiap.conexao.ConexaoBDManager;
 import br.com.fiap.dao.AlimentoDAO;
 import br.com.fiap.exception.DBException;
 import br.com.fiap.model.Alimento;
+import br.com.fiap.model.PeriodoAlimento;
 
 public class AlimentoDAOImpl implements AlimentoDAO {
 
@@ -25,7 +26,9 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 
 		try {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
-			String sql = "SELECT * FROM T_HTL_ALMT";
+			String sql = "SELECT * FROM T_HTL_ALMT "
+					+ "INNER JOIN T_HTL_PERIODO "
+					+ "ON T_HTL_ALMT.T_HTL_PERIODO_ID_PERIODO  = T_HTL_PERIODO.ID_PERIODO";
 			stmt = conexao.prepareStatement(sql);
 			rs = stmt.executeQuery();
 
@@ -35,14 +38,16 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 				Integer qtdeAlimento = rs.getInt("QT_ALIMENTO");
 				Integer qtdeCaloria = rs.getInt("QT_CALORIA");
 				Integer idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
-				Integer idPeriodo = rs.getInt("T_HTL_PERIODO_ID_PERIODO");
 				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
 				Calendar dtCadastro = Calendar.getInstance();
 				dtCadastro.setTimeInMillis(dtCad.getTime());
+				Integer idPeriodo = rs.getInt("T_HTL_PERIODO_ID_PERIODO");
+				String dsPeriodo = rs.getString("NM_PERIODO");
 
 				Alimento alimento = new Alimento(idAlimento, nmAlimento, qtdeAlimento, qtdeCaloria, idUsuario,
-						idPeriodo, dtCadastro);
-
+						 dtCadastro);
+				PeriodoAlimento pa = new PeriodoAlimento(idPeriodo, dsPeriodo);
+				alimento.setPeriodoAlimento(pa);
 				lista.add(alimento);
 			}
 
@@ -53,14 +58,12 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 		} finally {
 			try {
 				stmt.close();
-				rs.close();
 				conexao.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return lista;
-
 	}
 
 	@Override
@@ -76,7 +79,7 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 			stmt.setInt(2, alimento.getQtdeAlimento());
 			stmt.setInt(3, alimento.getQtdeCaloria());
 			stmt.setInt(4, alimento.getIdUsuario());
-			stmt.setInt(5, alimento.getIdPeriodo());
+			stmt.setInt(5, alimento.getPeriodoAlimento().getIdPeriodo());
 			java.sql.Date dataAtual = new java.sql.Date(alimento.getDtCadastro().getTimeInMillis());
 			stmt.setDate(6, dataAtual);
 			stmt.executeUpdate();

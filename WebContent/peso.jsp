@@ -29,7 +29,7 @@
 						FÍSICAS</a></li>
 				<li><i class="fas fa-calculator"></i> <a href="imc.jsp">IMC</a>
 				</li>
-				<li><i class="fas fa-utensils"></i> <a href="alimento.jsp">ALIMENTOS</a></li>
+				<li><i class="fas fa-utensils"></i> <a href="alimento?acao=listar">ALIMENTOS</a></li>
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
 					<a href="login.jsp">LOGOUT</a></li>
 			</ul>

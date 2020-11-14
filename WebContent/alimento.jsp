@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +17,7 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><i class="fas fa-chart-line"></i> <a
-					href="dashboard.jsp">DASHBOARD</a></li>
+				<li><i class="fas fa-chart-line"></i> <a href="dashboard.jsp">DASHBOARD</a></li>
 				<li><i class="fas fa-user-circle"></i> <a href="perfil.jsp">PERFIL</a>
 				</li>
 				<li><i class="fas fa-weight "></i> <a href="peso.jsp">PESO
@@ -27,7 +28,8 @@
 						FÍSICAS</a></li>
 				<li><i class="fas fa-calculator"></i> <a href="imc.jsp">IMC</a>
 				</li>
-				<li class="selected"><i class="fas fa-utensils"></i> <a href="alimento.jsp">ALIMENTOS</a></li>
+				<li class="selected"><i class="fas fa-utensils"></i> <a
+					href="alimento.jsp">ALIMENTOS</a></li>
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
 					<a href="login.jsp">LOGOUT</a></li>
 			</ul>
@@ -54,18 +56,23 @@
 								<th scope="col">Data</th>
 								<th scope="col">Alimento</th>
 								<th scope="col">Quantidade</th>
+								<th scope="col">Período</th>
 								<th scope="col">Editar</th>
 								<th scope="col">Deletar</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">20/06/2020</th>
-								<td>Maçã</td>
-								<td>2</td>
-								<td><i class="fas fa-edit"></i></td>
-								<td><i class="fas fa-trash-alt"></i></td>
-							</tr>
+							<c:forEach items="${alimentos}" var="alimento">
+								<tr>
+									<td><fmt:formatDate value="${alimento.dtCadastro.time }"
+											pattern="dd/MM/yyyy" /></td>
+									<td>${alimento.nmAlimento }</td>
+									<td>${alimento.qtdeAlimento }</td>
+									<td>${alimento.periodoAlimento.dsPeriodo }</td>
+									<td><i class="fas fa-edit"></i></td>
+									<td><i class="fas fa-trash-alt"></i></td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
