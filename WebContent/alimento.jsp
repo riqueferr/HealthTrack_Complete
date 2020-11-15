@@ -20,20 +20,21 @@
 				<li><i class="fas fa-chart-line"></i> <a href="dashboard.jsp">DASHBOARD</a></li>
 				<li><i class="fas fa-user-circle"></i> <a href="perfil.jsp">PERFIL</a>
 				</li>
-				<li><i class="fas fa-weight "></i> <a href="peso.jsp">PESO
-						E ALTURA</a></li>
-				<li><i class="fas fa-heartbeat"></i> <a href="pressao.jsp">PRESSÃO
-						ARTERIAL</a></li>
+				<li class="selected"><i class="fas fa-weight "></i> <a
+					href="imc?acao=listar">PESO E ALTURA</a></li>
+				<li><i class="fas fa-heartbeat"></i> <a
+					href="pressao?acao=listar">PRESSÃO ARTERIAL</a></li>
 				<li><i class="fas fa-running"></i> <a href="atividade.jsp">ATIVIDADES
 						FÍSICAS</a></li>
 				<li><i class="fas fa-calculator"></i> <a href="imc.jsp">IMC</a>
 				</li>
-				<li class="selected"><i class="fas fa-utensils"></i> <a
-					href="alimento.jsp">ALIMENTOS</a></li>
+				<li><i class="fas fa-utensils"></i> <a
+					href="alimento?acao=listar">ALIMENTOS</a></li>
+				<li><i class="fas fa-utensils"></i> <a
+					href="pagamento?acao=listar">PAGAMENTOS</a></li>
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
 					<a href="login.jsp">LOGOUT</a></li>
 			</ul>
-		</div>
 		</sidebar>
 		<main id="mainContent">
 			<header>

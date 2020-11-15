@@ -21,12 +21,12 @@ import br.com.fiap.model.Usuario;
 /**
  * Servlet implementation class PressaoServlet
  */
-@WebServlet("/pressoes")
+@WebServlet("/pressao")
 public class PressaoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private PressaoArterialDAO dao;
-	
+
 	public PressaoServlet() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -37,6 +37,27 @@ public class PressaoServlet extends HttpServlet {
 		super.init();
 		dao = DAOFactory.getArterialDAO();
 	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String acao = request.getParameter("acao");
+
+		switch (acao) {
+		case "listar":
+			listar(request, response);
+			break;
+		}
+	}
+
+	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<PressaoArterial> listaPressao = dao.listarTodos();
+		request.setAttribute("pressoes", listaPressao);
+		request.getRequestDispatcher("pressao.jsp").forward(request, response);
+	}
+
+	
+	
+	
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,10 +67,10 @@ public class PressaoServlet extends HttpServlet {
 			Integer nrDiastolica = Integer.parseInt(req.getParameter("diastolica"));
 			Calendar dtCadastro = Calendar.getInstance();
 			Integer idUsuario = Integer.parseInt(req.getParameter("idusuario"));
- 
-			PressaoArterial pressao = new PressaoArterial (0, nrSistolica, nrDiastolica, dtCadastro, idUsuario);
+
+			PressaoArterial pressao = new PressaoArterial(0, nrSistolica, nrDiastolica, dtCadastro, idUsuario);
 			dao.cadastrar(pressao);
-			
+
 			req.setAttribute("mensagemPressao", "Pressão cadastrada!");
 		} catch (DBException db) {
 			db.printStackTrace();
@@ -60,11 +81,5 @@ public class PressaoServlet extends HttpServlet {
 		}
 		req.getRequestDispatcher("pressao.jsp").forward(req, resp);
 	}
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<PressaoArterial> listaPressao = dao.listarTodos();
-		request.setAttribute("pressoes", listaPressao);
-		request.getRequestDispatcher("pressao.jsp").forward(request, response);
-		}
 
 }
