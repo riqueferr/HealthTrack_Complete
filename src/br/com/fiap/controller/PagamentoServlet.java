@@ -75,7 +75,7 @@ public class PagamentoServlet extends HttpServlet {
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Pagamento> listaPagamento = dao.listarTodos();
 		request.setAttribute("pagamentos", listaPagamento);
-		request.getRequestDispatcher("pagamentos.jsp").forward(request, response);
+		request.getRequestDispatcher("pagamento.jsp").forward(request, response);
 	}
 
 	private void abrirFormCadastro(HttpServletRequest request, HttpServletResponse response)

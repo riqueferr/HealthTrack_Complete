@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="header.jsp" />
-
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="ISO-8859-1"><jsp:include page="header.jsp"></jsp:include>
 </head>
 <body>
 	<div class="flex-dashboard">
@@ -40,31 +40,54 @@
 		<main id="mainContent">
 			<header>
 				<i id="iconMenu " onclick="responsiveSidebar() "
-					class="fas fa-bars "> </i> <a href="login.jsp"><i
+					class="fas fa-bars "> </i> <a href="login.jsp""><i
 					class="fas fa-sign-out-alt "></i> &nbsp; Logout</a>
 			</header>
 
 			<!-- FIM MENU -->
 
 			<div class="main-content">
-				<div class="imc-parent">
-					<div class="imc">
-						<h2>
-							Seu IMC é<span> 19,5 &nbsp;&nbsp;<i
-								class="fas fa-arrow-right"></i></span> <span class="status-imc-desktop">NORMAL</span>
-						</h2>
-						<span class="status-imc-mobile">OBESIDADE CL.3</span>
+				<div class="panel-row">
+					<button class="panel panel-50" a-view="cadastrarPagamento.jsp"
+						onclick="fetchContent(this)">
+						<i class="fas fa-plus"></i> Adicionar Pagamento
+					</button>
 
-						<div class="img-imc">
-							<img src="resources/images/calculadora-tabela-resultados.png"
-								alt="">
-						</div>
-					</div>
+				</div>
+				<div class="content" id="ajax-content"></div>
+
+				<div class="dynamic-content">
+					<table class="table table-dark">
+						<thead>
+							<tr>
+								<th scope="col">ID Pagamento</th>
+								<th scope="col">Data</th>
+								<th scope="col">Qtde Parc.</th>
+								<th scope="col">Valor Total</th>
+								<th scope="col">ID</th>
+								<th scope="col">Editar</th>
+								<th scope="col">Deletar</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${pagamentos }" var="pagamento">
+								<tr>
+									<td>${pagamento.idPagamento }</td>
+									<td><fmt:formatDate value="${pagamento.dtCadastro.time }"
+											pattern="dd/MM/yyyy" /></td>
+									<td>${pagamento.qtdeParcela }</td>
+									<td>R$${pagamento.vlTotal }</td>
+									<td>${pagamento.tipoPagamento.dsTipoPagamento }</td>
+									<td><i class="fas fa-edit"></i></td>
+									<td><i class="fas fa-trash-alt"></i></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</main>
 	</div>
-
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
