@@ -37,6 +37,7 @@
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
 					<a href="login.jsp">LOGOUT</a></li>
 			</ul>
+		</div>
 
 		</sidebar>
 		<main id="mainContent">
@@ -45,8 +46,8 @@
 					class="fas fa-bars "> </i> <a href="login.jsp"><i
 					class="fas fa-sign-out-alt "></i> &nbsp; Logout</a>
 			</header>
-			
-			
+
+
 			<div class="main-content">
 				<div class="panel-row">
 					<button class="panel panel-50" a-view="cadastrarPressao.jsp"

@@ -1,9 +1,11 @@
 package br.com.fiap.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -13,6 +15,7 @@ import br.com.fiap.dao.AlimentoDAO;
 import br.com.fiap.exception.DBException;
 import br.com.fiap.model.Alimento;
 import br.com.fiap.model.PeriodoAlimento;
+import br.com.fiap.model.Usuario;
 
 public class AlimentoDAOImpl implements AlimentoDAO {
 
@@ -109,7 +112,7 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 
 		try {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
-			String sql = "DELETE FROM T_HTL_ALMT WHERE ID_ALMT = ?";
+			String sql = "DELETE FROM T_HTL_ALMT WHERE ID_ALIMENTO = ?";
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, idAlimento);
 			stmt.executeUpdate();
@@ -127,9 +130,53 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 	}
 
 	@Override
-	public Alimento buscarPorId(int idAlimento) {
-		// TODO Auto-generated method stub
-		return null;
+	public Alimento buscarPorId(int codigo) {
+		SimpleDateFormat formatacaoData = new SimpleDateFormat("dd/MM/yyyy");
+		Alimento alimento = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "SELECT * FROM T_HTL_ALMT "
+					+ "INNER JOIN T_HTL_PERIODO "
+					+ "ON T_HTL_ALMT.T_HTL_PERIODO_ID_PERIODO  = T_HTL_PERIODO.ID_PERIODO "
+					+ "WHERE ID_ALIMENTO = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, codigo);
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				int idAlimento = rs.getInt("ID_ALIMENTO");
+				String nmAlimento = rs.getString("NM_ALIMENTO");
+				Integer qtdeAlimento = rs.getInt("QT_ALIMENTO");
+				Integer qtdeCaloria = rs.getInt("QT_CALORIA");
+				Integer idUsuario = rs.getInt("ID_USUARIO");
+				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
+				Calendar dtCadastro = Calendar.getInstance();
+				dtCadastro.setTimeInMillis(dtCad.getTime());
+				Integer idPeriodo = rs.getInt("T_HTL_PERIODO_ID_PERIODO");
+				String dsPeriodo = rs.getString("NM_PERIODO");
+				
+				alimento = new Alimento(idAlimento, nmAlimento, qtdeAlimento,qtdeCaloria,idUsuario,dtCadastro);
+				PeriodoAlimento periodoAlimento = new PeriodoAlimento(idPeriodo, dsPeriodo);
+				alimento.setPeriodoAlimento(periodoAlimento);
+				
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return alimento;
 	}
 
 }
