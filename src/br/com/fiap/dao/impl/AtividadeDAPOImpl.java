@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -12,6 +13,9 @@ import br.com.fiap.conexao.ConexaoBDManager;
 import br.com.fiap.dao.AtividadeDAO;
 import br.com.fiap.exception.DBException;
 import br.com.fiap.model.Atividade;
+import br.com.fiap.model.Pagamento;
+import br.com.fiap.model.TipoAtv;
+import br.com.fiap.model.TipoPagamento;
 
 public class AtividadeDAPOImpl implements AtividadeDAO {
 
@@ -25,15 +29,9 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 
 		try {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
-			String sql = "SELECT ID_ATV ," 
-					+ "	   tha.DT_CADASTRO ," 
-					+ "	   tha.VL_TEMPO ," 
-					+ "	   tha.VL_DISTANCIA , "
-					+ "	   tha.T_HTL_TIPOATV_ID_TIPOATV ," 
-					+ "	   tht.DS_TIPOATV ," 
-					+ "	   tha.T_HTL_USUARIO_ID_USUARIO "
-					+ "    FROM T_HTL_ATV tha ," 
-					+ "	   T_HTL_TIPOATV tht "
+			String sql = "SELECT ID_ATV ," + "	   tha.DT_CADASTRO ," + "	   tha.VL_TEMPO ,"
+					+ "	   tha.VL_DISTANCIA , " + "	   tha.T_HTL_TIPOATV_ID_TIPOATV ," + "	   tht.DS_TIPOATV ,"
+					+ "	   tha.T_HTL_USUARIO_ID_USUARIO " + "    FROM T_HTL_ATV tha ," + "	   T_HTL_TIPOATV tht "
 					+ "	   WHERE tha.T_HTL_TIPOATV_ID_TIPOATV = tht.ID_TIPOATV";
 			stmt = conexao.prepareStatement(sql);
 			rs = stmt.executeQuery();
@@ -49,8 +47,9 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 				Integer idTipoAtv = rs.getInt("T_HTL_TIPOATV_ID_TIPOATV");
 				String dsTipoAtv = rs.getString("DS_TIPOATV");
 
-				Atividade atividade = new Atividade(idAtividade, dtCadastro, vlTempo, vlDistancia, idTipoAtv, dsTipoAtv,
-						idUsuario);
+				Atividade atividade = new Atividade(idAtividade, dtCadastro, vlTempo, vlDistancia, idUsuario);
+				TipoAtv tipoAtv = new TipoAtv(idTipoAtv, dsTipoAtv);
+				atividade.setTipoAtv(tipoAtv);
 
 				lista.add(atividade);
 			}
@@ -72,7 +71,7 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 	}
 
 	@Override
-	public void cadastrar(Atividade atividade) throws DBException{
+	public void cadastrar(Atividade atividade) throws DBException {
 		PreparedStatement stmt = null;
 
 		try {
@@ -84,7 +83,7 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 			stmt.setDate(1, dataAtual);
 			stmt.setInt(2, atividade.getVlTempo());
 			stmt.setDouble(3, atividade.getVlDistancia());
-			stmt.setInt(4, atividade.getIdTipo());
+			stmt.setInt(4, atividade.getTipoAtv().getIdTipoAtv());
 			stmt.setInt(5, atividade.getIdUsuario());
 			stmt.executeUpdate();
 
@@ -102,13 +101,13 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 	}
 
 	@Override
-	public void atualizar(Atividade atividade) throws DBException{
+	public void atualizar(Atividade atividade) throws DBException {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void remover(int idAtividade) throws DBException{
+	public void remover(int idAtividade) throws DBException {
 		PreparedStatement stmt = null;
 
 		try {
@@ -130,9 +129,52 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 	}
 
 	@Override
-	public Atividade buscarPorId(int idAtividade) {
-		// TODO Auto-generated method stub
-		return null;
+	public Atividade buscarPorId(int codigo) {
+		SimpleDateFormat formatacaoData = new SimpleDateFormat("dd/MM/yyyy");
+		Atividade atividade = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "SELECT * FROM T_HTL_ATV " + "INNER JOIN T_HTL_TIPOATV "
+					+ "ON T_HTL_ATV.T_HTL_TIPOATV_ID_TIPOATV = T_HTL_TIPOATV.ID_TIPOATV "
+					+ "WHERE T_HTL_ATV.ID_ATV = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, codigo);
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				Integer idAtividade = rs.getInt("ID_ATV");
+				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
+				Calendar dtCadastro = Calendar.getInstance();
+				dtCadastro.setTimeInMillis(dtCad.getTime());
+				Integer vlTempo = rs.getInt("VL_TEMPO");
+				Double vlDistancia = rs.getDouble("VL_DISTANCIA");
+				Integer idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
+				Integer idTipoAtv = rs.getInt("T_HTL_TIPOATV_ID_TIPOATV");
+				String dsTipoAtv = rs.getString("DS_TIPOATV");
+
+				atividade = new Atividade(idAtividade, dtCadastro, vlTempo, vlDistancia, idUsuario);
+				TipoAtv tp = new TipoAtv(idTipoAtv, dsTipoAtv);
+				atividade.setTipoAtv(tp);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return atividade;
+
 	}
 
 }

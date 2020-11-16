@@ -143,9 +143,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 				usuario = new Usuario(idUsuario, nome, sobrenome, email, senha, dtNasc, dtCadastro);
 
-				System.out.println(usuario.getIdUsuario() + "  " + usuario.getNome() + " " + usuario.getSobrenome()
-						+ " " + usuario.getEmail() + " " + usuario.getSenha() + " " + usuario.getDtNasc() + " "
-						+ formatacaoData.format(usuario.getDtCadastro().getTime()));
 			}
 
 		} catch (SQLException e) {
@@ -205,7 +202,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			stmt.setString(1, usuario.getEmail());
 			stmt.setString(2, usuario.getSenha());
 			rs = stmt.executeQuery();
-			
+
 			if (rs.next()) {
 				return true;
 			}
@@ -223,5 +220,4 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		return false;
 	}
 
-	
 }

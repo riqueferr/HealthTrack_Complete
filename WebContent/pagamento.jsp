@@ -35,6 +35,7 @@
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
 					<a href="login.jsp">LOGOUT</a></li>
 			</ul>
+		</div>
 
 		</sidebar>
 		<main id="mainContent">

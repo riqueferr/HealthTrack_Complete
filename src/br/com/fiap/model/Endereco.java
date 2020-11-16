@@ -11,10 +11,10 @@ public class Endereco {
 	private String nmCidade;
 	private String nmBairro;
 	private String dsComplemento;
-	private Integer idUsuario;
+	private Usuario usuario;
 
 	public Endereco(Integer idEndereco, String nmLogradouro, String dsEndereco, String nrEndereco, String nrCep,
-			String nmUf, String nmCidade, String nmBairro, String dsComplemento, Integer idUsuario) {
+			String nmUf, String nmCidade, String nmBairro, String dsComplemento) {
 		super();
 		this.idEndereco = idEndereco;
 		this.nmLogradouro = nmLogradouro;
@@ -25,7 +25,6 @@ public class Endereco {
 		this.nmCidade = nmCidade;
 		this.nmBairro = nmBairro;
 		this.dsComplemento = dsComplemento;
-		this.idUsuario = idUsuario;
 	}
 
 	public Endereco() {
@@ -104,12 +103,12 @@ public class Endereco {
 		this.dsComplemento = dsComplemento;
 	}
 
-	public Integer getIdUsuario() {
-		return idUsuario;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	
