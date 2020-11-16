@@ -52,6 +52,7 @@ public class PagamentoDAOImpl implements PagDAO {
 				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
 				Calendar dtCadastro = Calendar.getInstance();
 				dtCadastro.setTimeInMillis(dtCad.getTime());
+				
 				Integer idTipoPag = rs.getInt("T_HTL_TIPO_ID_TIPO");
 				String dsTipoPag = rs.getString("NM_TIPOPAG");
 
