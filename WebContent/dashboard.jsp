@@ -39,6 +39,7 @@
 		</sidebar>
 		<main id="mainContent">
 			<header>
+
 				<i id="iconMenu " onclick="responsiveSidebar() "
 					class="fas fa-bars "> </i> <a href="login.jsp""><i
 					class="fas fa-sign-out-alt "></i> &nbsp; Logout</a>
@@ -56,7 +57,12 @@
 						<div class='col-sm-10 col-md-10 col-lg-10'>
 							<div class="dashboard-kcal">
 								<h3>
-									369 &nbsp;<span>Kcal</span><br>
+									<c:if test="${not empty user }">
+									
+									369 &nbsp;<span>Kcal ${user}
+									</span>
+										<br>
+									</c:if>
 								</h3>
 								CALORIAS INGERIDAS
 								<div class="p-calorias">
