@@ -29,10 +29,9 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 
 		try {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
-			String sql = "SELECT ID_ATV ," + "	   tha.DT_CADASTRO ," + "	   tha.VL_TEMPO ,"
-					+ "	   tha.VL_DISTANCIA , " + "	   tha.T_HTL_TIPOATV_ID_TIPOATV ," + "	   tht.DS_TIPOATV ,"
-					+ "	   tha.T_HTL_USUARIO_ID_USUARIO " + "    FROM T_HTL_ATV tha ," + "	   T_HTL_TIPOATV tht "
-					+ "	   WHERE tha.T_HTL_TIPOATV_ID_TIPOATV = tht.ID_TIPOATV";
+			String sql = "SELECT * FROM T_HTL_ATV"
+					+ " INNER JOIN T_HTL_TIPOATV"
+					+ " ON T_HTL_ATV.T_HTL_TIPOATV_ID_TIPOATV = T_HTL_TIPOATV.ID_TIPOATV";
 			stmt = conexao.prepareStatement(sql);
 			rs = stmt.executeQuery();
 
@@ -102,7 +101,36 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 
 	@Override
 	public void atualizar(Atividade atividade) throws DBException {
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = null;
+
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "UPDATE T_HTL_ATV SET DT_CADASTRO = ?, VL_TEMPO = ?, VL_DISTANCIA = ?,"
+					+ " T_HTL_TIPOATV_ID_TIPOATV = ?, T_HTL_USUARIO_ID_USUARIO = ?"
+					+ " WHERE ID_ATV = ?";
+			stmt = conexao.prepareStatement(sql);
+			java.sql.Date data = new java.sql.Date(atividade.getDtCadastro().getTimeInMillis());
+			stmt.setDate(1, data);
+			stmt.setInt(2, atividade.getVlTempo());
+			stmt.setDouble(3, atividade.getVlDistancia());
+			stmt.setInt(4, atividade.getTipoAtv().getIdTipoAtv());
+			stmt.setInt(5, atividade.getIdUsuario());
+			stmt.setInt(6, atividade.getIdAtividade());
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DBException("Erro ao atualizar.");
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}
 

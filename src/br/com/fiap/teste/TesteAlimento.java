@@ -17,6 +17,17 @@ public class TesteAlimento {
 
 		AlimentoDAOImpl dao = new AlimentoDAOImpl();
 		SimpleDateFormat formatacaoData = new SimpleDateFormat("dd/MM/yyyy");
+		
+		Alimento a = new Alimento();
+		a = dao.buscarPorId(15);
+		a.setNmAlimento("Salgado");
+		try {
+			dao.atualizar(a);
+			System.out.println("Produto alterado");
+		} catch (DBException e) {
+			e.printStackTrace();
+		}
+		
 
 //		Alimento alimentoA = new Alimento();
 //		alimentoA.setNmAlimento("Mandioca");
@@ -71,7 +82,7 @@ public class TesteAlimento {
 //					+ " ID do Usuário: " + alimentos.getIdUsuario() + " - Período: " + alimentos.getIdPeriodo()
 //					+ " - Data de Cadastro: " + formatacaoData.format(alimentos.getDtCadastro().getTime()));
 //		}
-		
+//	
 		PeriodoAlimentoDAO dao1 = DAOFactory.getPeriodoAlimento();
 				List<PeriodoAlimento> lista1 = dao1.listarTodos();
 				for (PeriodoAlimento p : lista1) {

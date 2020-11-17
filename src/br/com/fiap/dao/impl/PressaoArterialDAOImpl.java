@@ -95,7 +95,7 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 
 		try {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
-			String sql = "UPDATE T_HTL_USUARIO SET NR_SISTOLICA = ?, NR_DIASTOLICA = ?,"
+			String sql = "UPDATE T_HTL_PRESSAO SET NR_SISTOLICA = ?, NR_DIASTOLICA = ?,"
 					+ " DT_CADASTRO = ? WHERE ID_PRESSAO = ?";
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, pressaoArterial.getNrSistolica());

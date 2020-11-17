@@ -116,7 +116,41 @@ public class EnderecoDAOImpl implements EnderecoDAO {
 
 	@Override
 	public void atualizar(Endereco endereco) throws DBException {
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = null;
+
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "UPDATE T_HTL_ENDERECO SET T_HTL_USUARIO_ID_USUARIO = ?,"
+					+ " NR_CEP = ?, DS_LOGRADOURO = ?, DS_ENDERECO = ?,"
+					+ " NM_UF = ?, NM_CIDADE = ?, NM_BAIRRO = ?,"
+					+ " DS_COMPLEMENTO = ?, NR_ENDERECO = ?"
+					+ " WHERE ID_ENDERECO = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, endereco.getUsuario().getIdUsuario());
+			stmt.setString(2, endereco.getNrCep());
+			stmt.setString(3, endereco.getNmLogradouro());
+			stmt.setString(4, endereco.getDsEndereco());
+			stmt.setString(5, endereco.getNmUf());
+			stmt.setString(6, endereco.getNmCidade());
+			stmt.setString(7, endereco.getNmBairro());
+			stmt.setString(8, endereco.getDsComplemento());
+			stmt.setString(9, endereco.getNrEndereco());
+			stmt.setInt(10, endereco.getIdEndereco());
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DBException("Erro ao atualizar.");
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}
 

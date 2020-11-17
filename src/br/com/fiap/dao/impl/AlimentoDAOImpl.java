@@ -29,7 +29,7 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 
 		try {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
-			String sql = "SELECT * FROM T_HTL_ALMT "
+			String sql = "SELECT * FROM T_HTL_ALMT " 
 					+ "INNER JOIN T_HTL_PERIODO "
 					+ "ON T_HTL_ALMT.T_HTL_PERIODO_ID_PERIODO  = T_HTL_PERIODO.ID_PERIODO";
 			stmt = conexao.prepareStatement(sql);
@@ -48,7 +48,7 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 				String dsPeriodo = rs.getString("NM_PERIODO");
 
 				Alimento alimento = new Alimento(idAlimento, nmAlimento, qtdeAlimento, qtdeCaloria, idUsuario,
-						 dtCadastro);
+						dtCadastro);
 				PeriodoAlimento pa = new PeriodoAlimento(idPeriodo, dsPeriodo);
 				alimento.setPeriodoAlimento(pa);
 				lista.add(alimento);
@@ -102,7 +102,37 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 
 	@Override
 	public void atualizar(Alimento alimento) throws DBException {
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = null;
+
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "UPDATE T_HTL_ALMT SET NM_ALIMENTO = ?," + " QT_ALIMENTO = ?," + " QT_CALORIA = ?,"
+					+ " T_HTL_USUARIO_ID_USUARIO = ?," + " T_HTL_PERIODO_ID_PERIODO = ?," + " DT_CADASTRO = ?"
+					+ " WHERE ID_ALIMENTO = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, alimento.getNmAlimento());
+			stmt.setInt(2, alimento.getQtdeAlimento());
+			stmt.setDouble(3, alimento.getQtdeCaloria());
+			stmt.setInt(4, alimento.getIdUsuario());
+			stmt.setInt(5, alimento.getPeriodoAlimento().getIdPeriodo());
+			java.sql.Date data = new java.sql.Date(alimento.getDtCadastro().getTimeInMillis());
+			stmt.setDate(6, data);
+			stmt.setInt(7, alimento.getIdAlimento());
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DBException("Erro ao atualizar.");
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}
 
@@ -138,10 +168,8 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 
 		try {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
-			String sql = "SELECT * FROM T_HTL_ALMT "
-					+ "INNER JOIN T_HTL_PERIODO "
-					+ "ON T_HTL_ALMT.T_HTL_PERIODO_ID_PERIODO  = T_HTL_PERIODO.ID_PERIODO "
-					+ "WHERE ID_ALIMENTO = ?";
+			String sql = "SELECT * FROM T_HTL_ALMT " + "INNER JOIN T_HTL_PERIODO "
+					+ "ON T_HTL_ALMT.T_HTL_PERIODO_ID_PERIODO = T_HTL_PERIODO.ID_PERIODO " + "WHERE ID_ALIMENTO = ?";
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, codigo);
 			rs = stmt.executeQuery();
@@ -151,17 +179,17 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 				String nmAlimento = rs.getString("NM_ALIMENTO");
 				Integer qtdeAlimento = rs.getInt("QT_ALIMENTO");
 				Integer qtdeCaloria = rs.getInt("QT_CALORIA");
-				Integer idUsuario = rs.getInt("ID_USUARIO");
+				Integer idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
 				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
 				Calendar dtCadastro = Calendar.getInstance();
 				dtCadastro.setTimeInMillis(dtCad.getTime());
 				Integer idPeriodo = rs.getInt("T_HTL_PERIODO_ID_PERIODO");
 				String dsPeriodo = rs.getString("NM_PERIODO");
-				
-				alimento = new Alimento(idAlimento, nmAlimento, qtdeAlimento,qtdeCaloria,idUsuario,dtCadastro);
+
+				alimento = new Alimento(idAlimento, nmAlimento, qtdeAlimento, qtdeCaloria, idUsuario, dtCadastro);
 				PeriodoAlimento periodoAlimento = new PeriodoAlimento(idPeriodo, dsPeriodo);
 				alimento.setPeriodoAlimento(periodoAlimento);
-				
+
 			}
 
 		} catch (SQLException e) {

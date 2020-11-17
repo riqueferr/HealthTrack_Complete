@@ -7,6 +7,7 @@ import br.com.fiap.dao.ImcDAO;
 import br.com.fiap.dao.PagDAO;
 import br.com.fiap.dao.PeriodoAlimentoDAO;
 import br.com.fiap.dao.PressaoArterialDAO;
+import br.com.fiap.dao.TipoAtvDAO;
 import br.com.fiap.dao.TipoPagamentoDAO;
 import br.com.fiap.dao.UsuarioDAO;
 import br.com.fiap.dao.impl.AlimentoDAOImpl;
@@ -16,6 +17,7 @@ import br.com.fiap.dao.impl.ImcDAOImpl;
 import br.com.fiap.dao.impl.PagamentoDAOImpl;
 import br.com.fiap.dao.impl.PeriodoAlimentoDAOImpl;
 import br.com.fiap.dao.impl.PressaoArterialDAOImpl;
+import br.com.fiap.dao.impl.TipoAtvDAOImpl;
 import br.com.fiap.dao.impl.TipoPagamentoDAOImpl;
 import br.com.fiap.dao.impl.UsuarioDAOImpl;
 import br.com.fiap.model.PeriodoAlimento;
@@ -56,5 +58,9 @@ public class DAOFactory {
 	
 	public static PagDAO getPagDAO() {
 		return new PagamentoDAOImpl();
+	}
+	
+	public static TipoAtvDAO getTipoAtvDAO() {
+		return new TipoAtvDAOImpl();
 	}
 }

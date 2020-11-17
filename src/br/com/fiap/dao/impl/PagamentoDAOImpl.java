@@ -113,7 +113,36 @@ public class PagamentoDAOImpl implements PagDAO {
 
 	@Override
 	public void atualizar(Pagamento pagamento) throws DBException {
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = null;
+
+		try {
+			conexao = ConexaoBDManager.getInstante().obterConexao();
+			String sql = "UPDATE T_HTL_PAG SET QT_PARCELA = ?, VL_TOTAL = ?, T_HTL_TIPO_ID_TIPO = ?,"
+					+ " T_HTL_USUARIO_ID_USUARIO ?, DT_CADASTRO = ?"
+					+ " WHERE ID_PAG = ?";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, pagamento.getQtdeParcela());
+			stmt.setDouble(2, pagamento.getVlTotal());
+			stmt.setInt(3, pagamento.getTipoPagamento().getIdTipo());
+			stmt.setInt(4, pagamento.getIdUsuario());
+			java.sql.Date data = new java.sql.Date(pagamento.getDtCadastro().getTimeInMillis());
+			stmt.setDate(5, data);
+			stmt.setInt(6, pagamento.getIdPagamento());
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DBException("Erro ao atualizar.");
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}
 
