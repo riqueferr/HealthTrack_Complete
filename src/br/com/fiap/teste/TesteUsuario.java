@@ -22,8 +22,15 @@ public class TesteUsuario {
 		UsuarioDAO d = DAOFactory.getUsuarioDAO();
 		
 		Usuario usuarioA = new Usuario();
-		usuarioA.setSenha("teste");
-		System.out.println(usuarioA.getSenha());
+		
+		usuarioA.setSenha("teste");		
+		usuarioA.setEmail("henrique");
+		d.validarUsuario(usuarioA);
+		System.out.println(usuarioA.getEmail());
+		
+		
+		
+		
 //		usuarioA.setNome("Paola");
 //		usuarioA.setSobrenome("Assis");
 //		usuarioA.setEmail("assispaola.dev@gmail.com");

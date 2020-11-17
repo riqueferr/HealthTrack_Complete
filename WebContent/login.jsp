@@ -18,8 +18,7 @@
 				</div>
 				<c:if test="${empty user }">
 					<span class="navbar-text text-danger" style="margin-right: 10px">
-						${erro } 
-					</span>
+						${erro } </span>
 					<form action="login" method="post">
 						<div class="form-group">
 							<input type="text" class="form-control" name="email"
@@ -45,7 +44,6 @@
 				</c:if> --%>
 			</div>
 		</div>
-
 
 		<div class="banner-login">
 			<img src="resources/images/logo laranja.png" alt="Logo Health Track">

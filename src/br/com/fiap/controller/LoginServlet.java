@@ -27,11 +27,11 @@ public class LoginServlet extends HttpServlet {
 	private EmailBO bo;
 
 
-	public void init() throws ServletException {
-		super.init();
-		dao = DAOFactory.getUsuarioDAO();
-		bo = new EmailBO();
-	}
+//	public void init() throws ServletException {
+//		super.init();
+//		dao = DAOFactory.getUsuarioDAO();
+//		bo = new EmailBO();
+//	}
 	
 	
 	public LoginServlet() {
@@ -63,10 +63,11 @@ public class LoginServlet extends HttpServlet {
 		request.getRequestDispatcher("dashboard.jsp").forward(request, response);
 	}
 
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		HttpSession session = request.getSession();
-//		session.invalidate();
-//		request.getRequestDispatcher("login.jsp").forward(request, response);
-//	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		request.getRequestDispatcher("login.jsp").forward(request, response);
+	}
 }
