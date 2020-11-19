@@ -26,14 +26,23 @@ public class LoginServlet extends HttpServlet {
 	private UsuarioDAO dao;
 	private EmailBO bo;
 
-
 //	public void init() throws ServletException {
 //		super.init();
 //		dao = DAOFactory.getUsuarioDAO();
 //		bo = new EmailBO();
 //	}
-	
-	
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String acao = request.getParameter("acao");
+
+		switch (acao) {
+		case "sair":
+			sair(request, response);
+			break;
+		}
+	}
+
 	public LoginServlet() {
 		super();
 		dao = DAOFactory.getUsuarioDAO();
@@ -59,15 +68,17 @@ public class LoginServlet extends HttpServlet {
 			}
 		} else {
 			request.setAttribute("erro", "Usuário e/ou senha incorreto(s)...");
+			request.getRequestDispatcher("login.jsp").forward(request, response);	
 		}
 		request.getRequestDispatcher("dashboard.jsp").forward(request, response);
 	}
-
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+
+	private void sair(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
+	
+	
 }
