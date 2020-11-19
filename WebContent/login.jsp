@@ -36,6 +36,11 @@
 							</div>
 						</div>
 					</form>
+					<div class="row justify-content-center">
+						<a href="register.jsp">
+							Registre-se
+						</a>
+					</div>
 				</c:if>
 				<%-- <c:if test="${not empty user }">
 					<span class="navbar-text"> ${user } <a href="login.jsp"

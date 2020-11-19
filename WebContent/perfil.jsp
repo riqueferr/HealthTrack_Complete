@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +17,9 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><i class="fas fa-chart-line"></i> <a
-					href="dashboard.jsp">DASHBOARD</a></li>
-				<li class="selected"><i class="fas fa-user-circle"></i> <a href="perfil.jsp">PERFIL</a>
-				</li>
+				<li><i class="fas fa-chart-line"></i> <a href="dashboard.jsp">DASHBOARD</a></li>
+				<li class="selected"><i class="fas fa-user-circle"></i> <a
+					href="perfil.jsp">PERFIL</a></li>
 				<li><i class="fas fa-weight "></i> <a href="peso.jsp">PESO
 						E ALTURA</a></li>
 				<li><i class="fas fa-heartbeat"></i> <a href="pressao.jsp">PRESSÃO
@@ -29,16 +30,18 @@
 				</li>
 				<li><i class="fas fa-utensils"></i> <a href="alimento.jsp">ALIMENTOS</a></li>
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
-					<a href="login.jsp">LOGOUT</a></li>
+					<a href="login?acao=sair">LOGOUT</a></li>
 			</ul>
 		</div>
-		<p>sidebar</p>
 		</sidebar>
 		<main id="mainContent">
 			<header>
 				<i id="iconMenu " onclick="responsiveSidebar() "
-					class="fas fa-bars "> </i> <a href="login.jsp""><i
-					class="fas fa-sign-out-alt "></i> &nbsp; Logout</a>
+					class="fas fa-bars "> </i>
+				<c:if test="${not empty user }"> ${user }
+					</c:if>
+				<a href="login.jsp"><i class="fas fa-sign-out-alt "></i> &nbsp;
+					Logout</a>
 			</header>
 			<div class="main-content">
 				<div class="perfil-parent">

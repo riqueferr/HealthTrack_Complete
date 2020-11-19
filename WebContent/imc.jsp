@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +35,7 @@
 				<li><i class="fas fa-utensils"></i> <a
 					href="pagamento?acao=listar">PAGAMENTOS</a></li>
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
-					<a href="login.jsp">LOGOUT</a></li>
+					<a href="login?acao=sair">LOGOUT</a></li>
 			</ul>
 		</div>
 
@@ -41,8 +43,11 @@
 		<main id="mainContent">
 			<header>
 				<i id="iconMenu " onclick="responsiveSidebar() "
-					class="fas fa-bars "> </i> <a href="login.jsp"><i
-					class="fas fa-sign-out-alt "></i> &nbsp; Logout</a>
+					class="fas fa-bars "> </i>
+				<c:if test="${not empty user }"> ${user }
+					</c:if>
+				<a href="login.jsp"><i class="fas fa-sign-out-alt "></i> &nbsp;
+					Logout</a>
 			</header>
 
 			<!-- FIM MENU -->
