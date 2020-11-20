@@ -46,6 +46,9 @@ public class ImcServlet extends HttpServlet {
 		case "abrir-form-edicao":
 			abrirFormEdicao(request, response);
 			break;
+		case "abrir-form-cadastro":
+			abrirFormCadastro(request, response);
+			break;
 		}
 	}
 
@@ -60,8 +63,14 @@ public class ImcServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("codigo"));
 		Imc imc = dao.buscarPorId(id);
 		request.setAttribute("imc", imc);
-		request.getRequestDispatcher("edicao-imc.jsp").forward(request, response);
+		request.getRequestDispatcher("editarImc.jsp").forward(request, response);
 		;
+	}
+	
+	
+	private void abrirFormCadastro(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher("cadastrarImc.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -106,7 +115,7 @@ public class ImcServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("erroImc", "Por favor, valide as informações.");
 		}
-		request.getRequestDispatcher("peso.jsp").forward(request, response);
+		abrirFormCadastro(request, response);
 	}
 
 	private void excluir(HttpServletRequest request, HttpServletResponse response)
@@ -144,5 +153,6 @@ public class ImcServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("erro", "Por favor, valide os dados!");
 		}
+		listar(request, response);
 	}
 }

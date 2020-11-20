@@ -84,11 +84,17 @@ public class TesteAlimento {
 //		}
 //	
 		PeriodoAlimentoDAO dao1 = DAOFactory.getPeriodoAlimento();
+		
+		
 				List<PeriodoAlimento> lista1 = dao1.listarTodos();
 				for (PeriodoAlimento p : lista1) {
 					System.out.println(p.getDsPeriodo());
 				}
+		dao.remover(13);
+		System.out.println("ok");
 	}
+	
+
 	
 	
 

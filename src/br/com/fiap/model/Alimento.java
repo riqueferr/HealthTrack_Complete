@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class Alimento {
 
-	private Integer idAlimento;
+	private Integer codigo;
 	private String nmAlimento;
 	private Integer qtdeAlimento;
 	private Integer qtdeCaloria;
@@ -12,10 +12,10 @@ public class Alimento {
 	private PeriodoAlimento periodoAlimento;
 	private Calendar dtCadastro;
 
-	public Alimento(Integer idAlimento, String nmAlimento, Integer qtdeAlimento, Integer qtdeCaloria, Integer idUsuario,
+	public Alimento(Integer codigo, String nmAlimento, Integer qtdeAlimento, Integer qtdeCaloria, Integer idUsuario,
 			Calendar dtCadastro) {
 		super();
-		this.idAlimento = idAlimento;
+		this.codigo = codigo;
 		this.nmAlimento = nmAlimento;
 		this.qtdeAlimento = qtdeAlimento;
 		this.qtdeCaloria = qtdeCaloria;
@@ -27,12 +27,14 @@ public class Alimento {
 		super();
 	}
 
-	public Integer getIdAlimento() {
-		return idAlimento;
+	
+
+	public Integer getCodigo() {
+		return codigo;
 	}
 
-	public void setIdAlimento(Integer idAlimento) {
-		this.idAlimento = idAlimento;
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNmAlimento() {

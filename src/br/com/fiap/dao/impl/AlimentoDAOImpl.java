@@ -31,12 +31,13 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
 			String sql = "SELECT * FROM T_HTL_ALMT " 
 					+ "INNER JOIN T_HTL_PERIODO "
-					+ "ON T_HTL_ALMT.T_HTL_PERIODO_ID_PERIODO  = T_HTL_PERIODO.ID_PERIODO";
+					+ "ON T_HTL_ALMT.T_HTL_PERIODO_ID_PERIODO  = T_HTL_PERIODO.ID_PERIODO "
+					+ "ORDER BY DT_CADASTRO DESC ";
 			stmt = conexao.prepareStatement(sql);
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				Integer idAlimento = rs.getInt("ID_ALIMENTO");
+				Integer codigo = rs.getInt("ID_ALIMENTO");
 				String nmAlimento = rs.getString("NM_ALIMENTO");
 				Integer qtdeAlimento = rs.getInt("QT_ALIMENTO");
 				Integer qtdeCaloria = rs.getInt("QT_CALORIA");
@@ -47,7 +48,7 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 				Integer idPeriodo = rs.getInt("T_HTL_PERIODO_ID_PERIODO");
 				String dsPeriodo = rs.getString("NM_PERIODO");
 
-				Alimento alimento = new Alimento(idAlimento, nmAlimento, qtdeAlimento, qtdeCaloria, idUsuario,
+				Alimento alimento = new Alimento(codigo, nmAlimento, qtdeAlimento, qtdeCaloria, idUsuario,
 						dtCadastro);
 				PeriodoAlimento pa = new PeriodoAlimento(idPeriodo, dsPeriodo);
 				alimento.setPeriodoAlimento(pa);
@@ -117,7 +118,7 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 			stmt.setInt(5, alimento.getPeriodoAlimento().getIdPeriodo());
 			java.sql.Date data = new java.sql.Date(alimento.getDtCadastro().getTimeInMillis());
 			stmt.setDate(6, data);
-			stmt.setInt(7, alimento.getIdAlimento());
+			stmt.setInt(7, alimento.getCodigo());
 
 			stmt.executeUpdate();
 
