@@ -30,7 +30,10 @@
 						</div>
 					</div>
 				</div>
-				<button type="submit" class="btn">Cadastrar</button>
+				<a href="imc?acao=cadastrar" value="BOTAO TESTE">
+					<button type="submit" class="btn">Cadastrar</button>
+				</a>
+
 			</form>
 		</div>
 	</div>

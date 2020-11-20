@@ -47,14 +47,14 @@ public class EnderecoDAOImpl implements EnderecoDAO {
 				String nrEndereco = rs.getString("NR_ENDERECO");
 				
 				Integer idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
-				String dsSenha = rs.getString("DS_TIPOATV");
-				String dsEmail = rs.getString("DS_TIPOATV");
-				java.sql.Date dtNascimento = rs.getDate("DT_CADASTRO");
+				String dsSenha = rs.getString("DS_SENHA");
+				String dsEmail = rs.getString("DS_EMAIL");
+				java.sql.Date dtNascimento = rs.getDate("DT_NASCIMENTO");
 				java.sql.Date dtCadUsuario = rs.getDate("DT_CADASTRO");
 				Calendar dtCadastroUsuario = Calendar.getInstance();
 				dtCadastroUsuario.setTimeInMillis(dtCadUsuario.getTime());
-				String nome = rs.getString("DS_TIPOATV");
-				String sobrenome = rs.getString("DS_TIPOATV");
+				String nome = rs.getString("NM_NOME");
+				String sobrenome = rs.getString("NM_SOBRENOME");
 
 				Endereco endereco = new Endereco(idEndereco, nrCep, dsLogradouro, dsEndereco, nmUf, nmCidade, nmBairro, dsComplemento, nrEndereco);
 				Usuario usuario = new Usuario(idUsuario, nome, sobrenome, dsEmail, dsSenha, dtNascimento, dtCadastroUsuario);

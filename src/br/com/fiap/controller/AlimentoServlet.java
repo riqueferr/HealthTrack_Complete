@@ -62,9 +62,8 @@ public class AlimentoServlet extends HttpServlet {
 
 	private void abrirFormCadastro(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<PeriodoAlimento> listaPeriodo = periodoDao.listarTodos();
 		carregarOpcoesPeriodo(request);
-		request.getRequestDispatcher("alimento.jsp").forward(request, response);
+		request.getRequestDispatcher("cadastrarAlimento.jsp").forward(request, response);
 	}
 
 	private void abrirFormEdicao(HttpServletRequest request, HttpServletResponse response)
@@ -72,7 +71,8 @@ public class AlimentoServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("codigo"));
 		Alimento alimento = dao.buscarPorId(id);
 		request.setAttribute("alimento", alimento);
-		request.getRequestDispatcher("edicao-alimento.jsp").forward(request, response);
+		carregarOpcoesPeriodo(request);
+		request.getRequestDispatcher("editarAlimento.jsp").forward(request, response);
 		;
 	}
 
@@ -100,10 +100,10 @@ public class AlimentoServlet extends HttpServlet {
 
 	private void excluir(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int codigo = Integer.parseInt("codigo");
+		int codigo = Integer.parseInt(request.getParameter("codigo"));
 		try {
 			dao.remover(codigo);
-			request.setAttribute("msg", "Produto removido");
+			request.setAttribute("msg", "Alimento removido");
 		} catch (DBException e) {
 			e.printStackTrace();
 			request.setAttribute("erro", "Erro ao excluir");
@@ -112,7 +112,32 @@ public class AlimentoServlet extends HttpServlet {
 	}
 
 	private void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			int codigo = Integer.parseInt(request.getParameter("codigo"));
+			String nmAlimento = request.getParameter("nmAlimento");
+			Integer qtdeAlimento = Integer.parseInt(request.getParameter("qtdeAlimento"));
+			Integer qtdeCaloria = Integer.parseInt(request.getParameter("qtdeCaloria"));
+			Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+			Integer idPeriodo = Integer.parseInt(request.getParameter("periodo"));
+			Calendar dtCadastro = Calendar.getInstance();
 
+			PeriodoAlimento periodo = new PeriodoAlimento();
+			periodo.setIdPeriodo(idPeriodo);
+
+			Alimento alimento = new Alimento(codigo, nmAlimento, qtdeAlimento, qtdeCaloria, idUsuario, dtCadastro);
+			alimento.setPeriodoAlimento(periodo);
+
+			dao.atualizar(alimento);
+
+			request.setAttribute("msg", "Alimento atulizado.");
+		} catch (DBException db) {
+			db.printStackTrace();
+			request.setAttribute("erro", "Erro ao atualizar.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("erro", "Por favor, valide os dados.");
+		}
+		listar(request, response);
 	}
 
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
@@ -136,11 +161,12 @@ public class AlimentoServlet extends HttpServlet {
 			request.setAttribute("msg", "Alimento cadastrado!");
 		} catch (DBException db) {
 			db.printStackTrace();
-			request.setAttribute("erro", "Erro ao cadastrar!");
+			request.setAttribute("erro", "Erro ao cadastrar.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("erro", "Por favor, valide os dados!");
+			request.setAttribute("erro", "Por favor, valide os dados.");
 		}
 		abrirFormCadastro(request, response);
 	}
+
 }

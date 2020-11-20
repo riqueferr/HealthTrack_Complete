@@ -15,7 +15,7 @@ public interface AtividadeDAO {
   
     public void remover(int idAtividade) throws DBException;
     
-    public Atividade buscarPorId(int idAtividade) throws DBException;
+    public Atividade buscarPorId(int idAtividade);
     
 
 
