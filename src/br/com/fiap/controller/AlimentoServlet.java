@@ -1,6 +1,7 @@
 package br.com.fiap.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import br.com.fiap.exception.DBException;
 import br.com.fiap.model.Alimento;
 import br.com.fiap.model.PeriodoAlimento;
 import br.com.fiap.model.PressaoArterial;
+import br.com.fiap.model.Usuario;
 
 @WebServlet("/alimento")
 public class AlimentoServlet extends HttpServlet {
@@ -119,10 +121,12 @@ public class AlimentoServlet extends HttpServlet {
 			Integer qtdeCaloria = Integer.parseInt(request.getParameter("qtdeCaloria"));
 			Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 			Integer idPeriodo = Integer.parseInt(request.getParameter("periodo"));
+			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			Calendar dtCadastro = Calendar.getInstance();
+//			dtCadastro.setTime(format.parse(request.getParameter("dtCadastro")));
 
 			PeriodoAlimento periodo = new PeriodoAlimento();
-			periodo.setIdPeriodo(idPeriodo);
+			periodo.setCodigo(idPeriodo);
 
 			Alimento alimento = new Alimento(codigo, nmAlimento, qtdeAlimento, qtdeCaloria, idUsuario, dtCadastro);
 			alimento.setPeriodoAlimento(periodo);
@@ -146,12 +150,16 @@ public class AlimentoServlet extends HttpServlet {
 			String nmAlimento = request.getParameter("nmAlimento");
 			Integer qtdeAlimento = Integer.parseInt(request.getParameter("qtdeAlimento"));
 			Integer qtdeCaloria = Integer.parseInt(request.getParameter("qtdeCaloria"));
-			Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 			Integer idPeriodo = Integer.parseInt(request.getParameter("periodo"));
+			Integer idUsuario = Integer.parseInt(request.getParameter("usuario"));
+			
 			Calendar dtCadastro = Calendar.getInstance();
 
 			PeriodoAlimento periodo = new PeriodoAlimento();
-			periodo.setIdPeriodo(idPeriodo);
+			periodo.setCodigo(idPeriodo);
+			
+			Usuario usuario = new Usuario();
+			usuario.setIdUsuario(idUsuario);
 
 			Alimento alimento = new Alimento(0, nmAlimento, qtdeAlimento, qtdeCaloria, idUsuario, dtCadastro);
 			alimento.setPeriodoAlimento(periodo);

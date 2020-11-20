@@ -46,10 +46,11 @@
 			</header>
 			<div class="main-content">
 				<div class="panel-row">
-					<button class="panel panel-50" a-view="cadastrarAlimento.jsp"
-						onclick="fetchContent(this)">
-						<i class="fas fa-plus"></i> Cadastrar alimento
-					</button>
+					<a href="alimento?acao=abrir-form-cadastro">
+						<button class="panel panel-50">
+							<i class="fas fa-plus"></i> Cadastrar alimento
+						</button>
+					</a>
 				</div>
 				<c:if test="${not empty msg }">
 					<div class="alert alert-success">${msg }</div>
@@ -78,7 +79,13 @@
 									<td>${alimento.nmAlimento }</td>
 									<td>${alimento.qtdeAlimento }</td>
 									<td>${alimento.periodoAlimento.dsPeriodo }</td>
-									<td><i class="fas fa-edit"></i></td>
+									<td><c:url value="alimento" var="link">
+											<c:param name="acao" value="abrir-form-edicao" />
+											<c:param name="codigo" value="${alimento.codigo }" />
+										</c:url> <a href="${link }">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Editar</button>
+									</a></td>
 									<td><button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#excluirModal"
 											onclick="codigoExcluir.value = ${alimento.codigo}">
@@ -108,8 +115,8 @@
 				<div class="modal-body">DESEJA REALMENTE EXCLUIR?</div>
 				<div class="modal-footer">
 					<form action="alimento" method="post">
-							<input type="hidden" name="acao" value="excluir">
-							<input type="hidden" name="codigo" id="codigoExcluir">
+						<input type="hidden" name="acao" value="excluir"> <input
+							type="hidden" name="codigo" id="codigoExcluir">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Não</button>
 						<button type="submit" class="btn btn-primary">Sim</button>

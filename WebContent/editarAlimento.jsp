@@ -61,32 +61,44 @@
 				</c:if>
 
 				<form action="alimento" method="post">
-					<input type="hidden" value="cadastrar" name="acao">
+					<input type="hidden" value="editar" name="acao"> <input
+						type="hidden" value="${alimento.codigo }" name="codigo">
 					<div class="form-group">
 						<label for="id-nome">Nome do Alimento</label> <input type="text"
-							class="form-control" id="id-nome" name="nmAlimento">
+							class="form-control" id="id-nome" name="nmAlimento"
+							value="${alimento.nmAlimento }">
 					</div>
 					<div class="form-group">
 						<label for="id-qtdeAlimento">Qtde Alimento</label> <input
 							type="number" class="form-control" id="id-qtdeAlimento"
-							name="qtdeAlimento">
+							name="qtdeAlimento" value="${alimento.qtdeAlimento }">
 					</div>
 					<div class="form-group">
 						<label for="id-calorias">Qtde Calorias</label> <input
 							type="number" class="form-control" id="id-calorias"
-							name="qtdeCaloria">
+							name="qtdeCaloria" value="${alimento.qtdeCaloria}">
 					</div>
 					<div class="form-group">
-						<label for="id-periodo">Calorias</label> <select name="periodo"
+						<label for="id-periodo">Periodo</label> <select name="periodo"
 							id="id-periodo" class="form-control">
 							<option value="0">Selecione</option>
 							<c:forEach items="${periodos }" var="periodo">
-								<option value="${periodo.codigo }">${periodo.dsPeriodo }</option>
+								<c:if
+									test="${periodo.codigo == alimento.periodoAlimento.codigo }">
+									<option value="${periodo.codigo }" selected>${periodo.dsPeriodo }</option>
+								</c:if>
+								<c:if
+									test="${periodo.codigo != alimento.periodoAlimento.codigo }">
+									<option value="${periodo.codigo }">${periodo.dsPeriodo }</option>
+								</c:if>
 							</c:forEach>
-						</select> <label for="id-usuario">Usuario</label> <input id="id-usuario"
-							type=number class="form-control" name="usuario">
+						</select> 
+						<label for="id-usuario">Usuario</label> <input id="id-usuario"
+							type=number class="form-control" name="idUsuario"
+							value="${alimento.idUsuario }">
 					</div>
-					<button type="submit" class="btn btn-primary">Cadastrar</button>
+					<input type="submit" class="btn btn-primary" value="Salvar">
+					<a href="alimento?acao=listar" class="btn btn-danger">Cancelar</a>
 				</form>
 			</div>
 		</main>
