@@ -135,7 +135,7 @@ public class PressaoServlet extends HttpServlet {
 	}
 
 	private void excluir(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int codigo = Integer.parseInt("codigo");
+		int codigo = Integer.parseInt(req.getParameter("codigo"));
 		try {
 			dao.remover(codigo);
 			req.setAttribute("msg", "Pressão removida");

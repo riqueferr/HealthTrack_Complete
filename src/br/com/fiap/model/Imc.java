@@ -6,7 +6,7 @@ import java.util.Calendar;
 public class Imc {
 	
     private static Integer s = 0;
-	private Integer idImc;
+	private Integer codigo;
 	private Double valor;
 	private Calendar dtCadastro;
 	private Double peso;
@@ -21,9 +21,9 @@ public class Imc {
     public Imc() {
     }
 
-    public Imc(Integer idImc, Double valor, Calendar dtCadastro, Double peso, Double altura, Integer idUsuario) {
+    public Imc(Integer codigo, Double valor, Calendar dtCadastro, Double peso, Double altura, Integer idUsuario) {
 	super();
-	this.idImc = idImc;
+	this.setCodigo(codigo);
 	this.valor = valor;
 	this.dtCadastro = dtCadastro;
 	this.peso = peso;
@@ -39,13 +39,7 @@ public class Imc {
         Imc.s = s;
     }
     
-    public Integer getIdImc() {
-		return idImc;
-	}
-
-	public void setIdImc(Integer idImc) {
-		this.idImc = idImc;
-	}
+    
 
 	public Double getValor() {
 		return valor;
@@ -105,15 +99,23 @@ public class Imc {
         }
     }
 
-    public Integer contador() {
-        this.idImc =+ s++;
-        return this.getIdImc();
-    }
+//    public Integer contador() {
+//        this.idImc =+ s++;
+//        return this.getIdImc();
+//    }
+//
+//    public String toString() {
+//        DecimalFormat imc = new DecimalFormat("#,###.00");
+//        return "Objeto " + this.contador() + " - Altura: " + this.altura + " - Peso: " +
+//                this.peso + ". O IMC é " +
+//                imc.format(this.peso / (this.altura * this.altura));
+//    }
 
-    public String toString() {
-        DecimalFormat imc = new DecimalFormat("#,###.00");
-        return "Objeto " + this.contador() + " - Altura: " + this.altura + " - Peso: " +
-                this.peso + ". O IMC é " +
-                imc.format(this.peso / (this.altura * this.altura));
-    }
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
 }

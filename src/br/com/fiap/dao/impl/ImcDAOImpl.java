@@ -106,7 +106,7 @@ public class ImcDAOImpl implements ImcDAO {
 			stmt.setDouble(3, imc.getPeso());
 			stmt.setDouble(4, imc.getAltura());
 			stmt.setInt(5, imc.getIdUsuario());
-			stmt.setInt(6, imc.getIdImc());
+			stmt.setInt(6, imc.getCodigo());
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {

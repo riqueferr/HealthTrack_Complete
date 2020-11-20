@@ -2,12 +2,12 @@ package br.com.fiap.model;
 
 public class PeriodoAlimento {
 
-	private Integer idPeriodo;
+	private Integer codigo;
 	private String dsPeriodo;
 
-	public PeriodoAlimento(Integer idPeriodo, String dsPeriodo) {
+	public PeriodoAlimento(Integer codigo, String dsPeriodo) {
 		super();
-		this.idPeriodo = idPeriodo;
+		this.codigo = codigo;
 		this.dsPeriodo = dsPeriodo;
 	}
 
@@ -15,12 +15,12 @@ public class PeriodoAlimento {
 		super();
 	}
 
-	public Integer getIdPeriodo() {
-		return idPeriodo;
+	public Integer getCodigo() {
+		return codigo;
 	}
 
-	public void setIdPeriodo(Integer idPeriodo) {
-		this.idPeriodo = idPeriodo;
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getDsPeriodo() {

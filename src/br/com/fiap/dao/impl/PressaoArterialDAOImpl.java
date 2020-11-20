@@ -30,7 +30,7 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				Integer idPressaoArterial = rs.getInt("ID_PRESSAO");
+				Integer codigo = rs.getInt("ID_PRESSAO");
 				Integer nrSistolica = rs.getInt("NR_SISTOLICA");
 				Integer nrDiastolica = rs.getInt("NR_DIASTOLICA");
 				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
@@ -38,7 +38,7 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 				dtCadastro.setTimeInMillis(dtCad.getTime());
 				Integer idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
 
-				PressaoArterial pressaoArterial = new PressaoArterial(idPressaoArterial, nrSistolica, nrDiastolica,
+				PressaoArterial pressaoArterial = new PressaoArterial(codigo, nrSistolica, nrDiastolica,
 						dtCadastro, idUsuario);
 
 				lista.add(pressaoArterial);
@@ -102,7 +102,7 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 			stmt.setInt(2, pressaoArterial.getNrDiastolica());
 			java.sql.Date dataAtual = new java.sql.Date(pressaoArterial.getDtCadastro().getTimeInMillis());
 			stmt.setDate(3, dataAtual);
-			stmt.setInt(4, pressaoArterial.getIdPressaoArterial());
+			stmt.setInt(4, pressaoArterial.getCodigo());
 			stmt.executeQuery();
 
 		} catch (SQLException e) {
@@ -141,7 +141,7 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 	}
 
 	@Override
-	public PressaoArterial buscarPorId(int codigo) {
+	public PressaoArterial buscarPorId(int id) {
 
 		PressaoArterial pressaoArterial = null;
 		PreparedStatement stmt = null;
@@ -150,12 +150,12 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
 			String sql = "SELECT * FROM T_HTL_PRESSAO WHERE ID_PRESSAO = ?";
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, codigo);
+			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
 
-				Integer idPressaoArterial = rs.getInt("ID_PRESSAO");
+				Integer codigo = rs.getInt("ID_PRESSAO");
 				Integer nrSistolica = rs.getInt("NR_SISTOLICA");
 				Integer nrDiastolica = rs.getInt("NR_DIASTOLICA");
 				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
@@ -163,7 +163,7 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO {
 				dtCadastro.setTimeInMillis(dtCad.getTime());
 				Integer idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
 
-				pressaoArterial = new PressaoArterial(idPressaoArterial, nrSistolica, nrDiastolica, dtCadastro,
+				pressaoArterial = new PressaoArterial(codigo, nrSistolica, nrDiastolica, dtCadastro,
 						idUsuario);
 
 			}

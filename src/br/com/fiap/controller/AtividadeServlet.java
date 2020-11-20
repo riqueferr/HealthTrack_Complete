@@ -105,7 +105,7 @@ public class AtividadeServlet extends HttpServlet {
 
 	private void excluir(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int codigo = Integer.parseInt("codigo");
+		int codigo = Integer.parseInt(request.getParameter("codigo"));
 		try {
 			dao.remover(codigo);
 			request.setAttribute("msg", "Produto removido");

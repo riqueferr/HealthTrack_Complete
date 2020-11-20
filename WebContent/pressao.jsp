@@ -44,13 +44,18 @@
 			<header>
 				<i id="iconMenu " onclick="responsiveSidebar() "
 					class="fas fa-bars "> </i>
-					<c:if test="${not empty user }"> ${user }
+				<c:if test="${not empty user }"> ${user }
 					</c:if>
-					 <a href="login.jsp"><i
-					class="fas fa-sign-out-alt "></i> &nbsp; Logout</a>
+				<a href="login.jsp"><i class="fas fa-sign-out-alt "></i> &nbsp;
+					Logout</a>
 			</header>
 
-
+			<c:if test="${not empty msg }">
+				<div class="alert alert-success">${msg }</div>
+			</c:if>
+			<c:if test="${not empty erro }">
+				<div class="alert alert-danger">${erro }</div>
+			</c:if>
 			<div class="main-content">
 				<div class="panel-row">
 					<button class="panel panel-50" a-view="cadastrarPressao.jsp"
@@ -74,12 +79,21 @@
 						<tbody>
 							<c:forEach items="${pressoes }" var="pressao">
 								<tr>
-									<td>${pressao.idPressaoArterial}</td>
+									<td>${pressao.codigo}</td>
 									<td><fmt:formatDate value="${pressao.dtCadastro.time }"
 											pattern="dd/MM/yyyy" /></td>
 									<td>${pressao.nrSistolica }/${pressao.nrDiastolica }</td>
-									<td><i class="fas fa-edit"></i>&nbsp;&nbsp;&nbsp; <i
-										class="fas fa-trash-alt"></i></td>
+									<td><c:url value="pressao" var="link">
+											<c:param name="acao" value="abrir-form-edicao" />
+											<c:param name="codigo" value="${pressao.codigo }" />
+										</c:url> <a href="${link }">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Editar</button>
+									</a></td>
+									<td><button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#excluirModal"
+											onclick="codigoExcluir.value = ${pressao.codigo}">
+											Excluir</button></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -89,5 +103,30 @@
 		</main>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
+
+	<!-- Modal -->
+	<div class="modal fade" id="excluirModal" tabindex="-1" role="dialog"
+		aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">DESEJA REALMENTE EXCLUIR?</div>
+				<div class="modal-footer">
+					<form action="pressao" method="post">
+						<input type="hidden" name="acao" value="excluir"> <input
+							type="hidden" name="codigo" id="codigoExcluir">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Não</button>
+						<button type="submit" class="btn btn-primary">Sim</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
