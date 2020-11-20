@@ -4,16 +4,16 @@ import java.util.Calendar;
 
 public class Atividade {
 
-	private Integer idAtividade;
+	private Integer codigo;
 	private Calendar dtCadastro;
 	private Integer vlTempo;
 	private Double vlDistancia;
 	private Integer idUsuario;
 	private TipoAtv tipoAtv;
 
-	public Atividade(Integer idAtividade, Calendar dtCadastro, Integer vlTempo, Double vlDistancia, Integer idUsuario) {
+	public Atividade(Integer codigo, Calendar dtCadastro, Integer vlTempo, Double vlDistancia, Integer idUsuario) {
 		super();
-		this.idAtividade = idAtividade;
+		this.setCodigo(codigo);
 		this.dtCadastro = dtCadastro;
 		this.vlTempo = vlTempo;
 		this.vlDistancia = vlDistancia;
@@ -24,13 +24,6 @@ public class Atividade {
 		super();
 	}
 
-	public Integer getIdAtividade() {
-		return idAtividade;
-	}
-
-	public void setIdAtividade(Integer idAtividade) {
-		this.idAtividade = idAtividade;
-	}
 
 	public Calendar getDtCadastro() {
 		return dtCadastro;
@@ -70,6 +63,14 @@ public class Atividade {
 
 	public void setTipoAtv(TipoAtv tipoAtv) {
 		this.tipoAtv = tipoAtv;
+	}
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
 }

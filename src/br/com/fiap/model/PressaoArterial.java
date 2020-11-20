@@ -4,17 +4,17 @@ import java.util.Calendar;
 
 public class PressaoArterial {
 
-	private Integer idPressaoArterial;
+	private Integer codigo;
 	private Integer nrSistolica;
 	private Integer nrDiastolica;
 	private Calendar dtCadastro;
 	private Integer idUsuario;
 	
 	
-	public PressaoArterial(Integer idPressaoArterial, Integer nrSistolica, Integer nrDiastolica, Calendar dtCadastro,
+	public PressaoArterial(Integer codigo, Integer nrSistolica, Integer nrDiastolica, Calendar dtCadastro,
 			Integer idUsuario) {
 		super();
-		this.idPressaoArterial = idPressaoArterial;
+		this.codigo = codigo;
 		this.nrSistolica = nrSistolica;
 		this.nrDiastolica = nrDiastolica;
 		this.dtCadastro = dtCadastro;
@@ -24,16 +24,6 @@ public class PressaoArterial {
 
 	public PressaoArterial() {
 		super();
-	}
-
-
-	public Integer getIdPressaoArterial() {
-		return idPressaoArterial;
-	}
-
-
-	public void setIdPressaoArterial(Integer idPressaoArterial) {
-		this.idPressaoArterial = idPressaoArterial;
 	}
 
 
@@ -74,6 +64,16 @@ public class PressaoArterial {
 
 	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 	
 	

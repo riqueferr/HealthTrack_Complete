@@ -115,7 +115,7 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 			stmt.setDouble(3, atividade.getVlDistancia());
 			stmt.setInt(4, atividade.getTipoAtv().getIdTipoAtv());
 			stmt.setInt(5, atividade.getIdUsuario());
-			stmt.setInt(6, atividade.getIdAtividade());
+			stmt.setInt(6, atividade.getCodigo());
 
 			stmt.executeUpdate();
 
@@ -157,7 +157,7 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 	}
 
 	@Override
-	public Atividade buscarPorId(int codigo) {
+	public Atividade buscarPorId(int id) {
 		SimpleDateFormat formatacaoData = new SimpleDateFormat("dd/MM/yyyy");
 		Atividade atividade = null;
 		PreparedStatement stmt = null;
@@ -169,11 +169,11 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 					+ "ON T_HTL_ATV.T_HTL_TIPOATV_ID_TIPOATV = T_HTL_TIPOATV.ID_TIPOATV "
 					+ "WHERE T_HTL_ATV.ID_ATV = ?";
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, codigo);
+			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				Integer idAtividade = rs.getInt("ID_ATV");
+				Integer codigo = rs.getInt("ID_ATV");
 				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
 				Calendar dtCadastro = Calendar.getInstance();
 				dtCadastro.setTimeInMillis(dtCad.getTime());
@@ -183,7 +183,7 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 				Integer idTipoAtv = rs.getInt("T_HTL_TIPOATV_ID_TIPOATV");
 				String dsTipoAtv = rs.getString("DS_TIPOATV");
 
-				atividade = new Atividade(idAtividade, dtCadastro, vlTempo, vlDistancia, idUsuario);
+				atividade = new Atividade(codigo, dtCadastro, vlTempo, vlDistancia, idUsuario);
 				TipoAtv tp = new TipoAtv(idTipoAtv, dsTipoAtv);
 				atividade.setTipoAtv(tp);
 
