@@ -116,13 +116,14 @@ public class PressaoServlet extends HttpServlet {
 
 	private void editar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			int codigo = Integer.parseInt(req.getParameter("codigo"));
 			Integer nrSistolica = Integer.parseInt(req.getParameter("sistolica"));
 			Integer nrDiastolica = Integer.parseInt(req.getParameter("diastolica"));
 			Calendar dtCadastro = Calendar.getInstance();
 			Integer idUsuario = Integer.parseInt(req.getParameter("idusuario"));
 
-			PressaoArterial pressao = new PressaoArterial(0, nrSistolica, nrDiastolica, dtCadastro, idUsuario);
-			dao.cadastrar(pressao);
+			PressaoArterial pressao = new PressaoArterial(codigo, nrSistolica, nrDiastolica, dtCadastro, idUsuario);
+			dao.atualizar(pressao);
 
 			req.setAttribute("msg", "Pressão Atualizada!");
 		} catch (DBException db) {
@@ -132,6 +133,7 @@ public class PressaoServlet extends HttpServlet {
 			e.printStackTrace();
 			req.setAttribute("erro", "Por favor, valide os dados!");
 		}
+		listar(req, resp);
 	}
 
 	private void excluir(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

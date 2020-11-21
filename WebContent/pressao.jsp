@@ -50,12 +50,7 @@
 					Logout</a>
 			</header>
 
-			<c:if test="${not empty msg }">
-				<div class="alert alert-success">${msg }</div>
-			</c:if>
-			<c:if test="${not empty erro }">
-				<div class="alert alert-danger">${erro }</div>
-			</c:if>
+
 			<div class="main-content">
 				<div class="panel-row">
 					<a href="pressao?acao=abrir-form-cadastro">
@@ -64,6 +59,13 @@
 						</button>
 					</a>
 				</div>
+
+				<c:if test="${not empty msg }">
+					<div class="alert alert-success">${msg }</div>
+				</c:if>
+				<c:if test="${not empty erro }">
+					<div class="alert alert-danger">${erro }</div>
+				</c:if>
 				<div class="content" id="ajax-content"></div>
 				<div class="dynamic-content">
 					<table class="table table-dark">

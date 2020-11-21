@@ -64,23 +64,25 @@
 
 				<div class="dynamic-content">
 					<form method="post" action="pressao">
-						<input type="hidden" value="cadastrar" name="acao">
+						<input type="hidden" value="editar" name="acao"> <input
+						type="hidden" value="${pressao.codigo }" name="codigo">
 						<div class="form-group">
 							<label for="id_sistolica" style="color: white">Pressão
 								Sistólica</label> <input id="id_sistolica" type="number"
-								class="form-control" name="sistolica">
+								class="form-control" name="sistolica" value="${pressao.nrSistolica }">
 						</div>
 						<div class="form-group">
 							<label for="id_diastolica" style="color: white">Pressão
 								Diastólica</label> <input id="id_diastolica" type="number"
-								class="form-control" name="diastolica">
+								class="form-control" name="diastolica" value="${pressao.nrDiastolica }">
 						</div>
 						<div class="form-group">
 							<label for="id_usuario" style="color: white">ID do
 								usuário</label> <input id="id_usuario" type="number"
-								class="form-control" name="idusuario">
+								class="form-control" name="idusuario" value="${pressao.idUsuario }">
 						</div>
-						<button type="submit" class="btn btn-primary">Cadastrar</button>
+						<input type="submit" class="btn btn-primary" value="Salvar">
+					<a href="pressao?acao=listar" class="btn btn-danger">Cancelar</a>
 					</form>
 				</div>
 			</div>
