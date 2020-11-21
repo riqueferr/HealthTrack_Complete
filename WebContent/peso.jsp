@@ -53,11 +53,11 @@
 
 			<div class="main-content">
 				<div class="panel-row">
-					<button class="panel panel-50" a-view="cadastrarPeso.jsp"
-						onclick="fetchContent(this)">
-						<i class="fas fa-plus"></i> Adicionar Peso
-					</button>
-
+					<a href="imc?acao=abrir-form-cadastro">
+						<button class="panel panel-50">
+							<i class="fas fa-plus"></i> Adicionar Peso
+						</button>
+					</a>
 				</div>
 				<div class="content" id="ajax-content"></div>
 

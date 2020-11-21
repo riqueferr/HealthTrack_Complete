@@ -58,10 +58,11 @@
 			</c:if>
 			<div class="main-content">
 				<div class="panel-row">
-					<button class="panel panel-50" a-view="cadastrarPressao.jsp"
-						onclick="fetchContent(this)">
-						<i class="fas fa-plus"></i> Cadastrar pressão arterial
-					</button>
+					<a href="pressao?acao=abrir-form-cadastro">
+						<button class="panel panel-50">
+							<i class="fas fa-plus"></i> Cadastrar pressão arterial
+						</button>
+					</a>
 				</div>
 				<div class="content" id="ajax-content"></div>
 				<div class="dynamic-content">
