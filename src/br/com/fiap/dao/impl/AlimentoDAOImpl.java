@@ -118,7 +118,7 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 			stmt.setInt(5, alimento.getPeriodoAlimento().getCodigo());
 			java.sql.Date data = new java.sql.Date(alimento.getDtCadastro().getTimeInMillis());
 			stmt.setDate(6, data);
-			stmt.setInt(7, alimento.getIdUsuario());
+			stmt.setInt(7, alimento.getCodigo());
 
 			stmt.executeUpdate();
 

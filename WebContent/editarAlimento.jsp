@@ -94,7 +94,7 @@
 							</c:forEach>
 						</select> 
 						<label for="id-usuario">Usuario</label> <input id="id-usuario"
-							type=number class="form-control" name="idUsuario"
+							type=number class="form-control" name="usuario"
 							value="${alimento.idUsuario }">
 					</div>
 					<input type="submit" class="btn btn-primary" value="Salvar">
