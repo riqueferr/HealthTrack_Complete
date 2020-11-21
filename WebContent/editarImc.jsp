@@ -58,32 +58,33 @@
 			<div class="container">
 				<div class="dynamic-content">
 					<form method="post" action="imc">
-					<input type="hidden" value="cadastrar" name="acao">
+					<input type="hidden" value="editar" name="acao"> <input
+						type="hidden" value="${imc.codigo }" name="codigo">
 						<div class="row testeCorBranca">
 							<div class="col-md-2">
 								<div class="form-group">
 									<label for="id_peso" style="color:white">Novo peso</label>
 									 <input type="text"
 										class="form-control " id="id_peso" name="peso" 
-										>
+										value="${imc.peso}">
 								</div>
 							</div>
 							<div class="col-md-2">
 								<div class="form-group">
 									<label for="id_altura" style="color:white">Nova altura</label>
 									 <input type="text"
-										class="form-control" id="id_altura" name="altura">
+										class="form-control" id="id_altura" name="altura" value="${imc.altura }">
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 									<label for="id_usuario" style="color:white">ID Usuario</label>
 									 <input type="text"
-										class="form-control" id="id_usuario" name="idUsuario">
+										class="form-control" id="id_usuario" name="idUsuario" value="${imc.idUsuario }">
 								</div>
 							</div>
 						</div>
-						<a href="imc?acao=cadastrar">
+						<a href="imc?acao=editar">
 							<button type="submit" class="btn btn-primary">Salvar</button>
 						</a>
 
