@@ -20,7 +20,7 @@ public class TesteAlimento {
 		
 		Alimento a = new Alimento();
 		a = dao.buscarPorId(15);
-		a.setNmAlimento("Salgado");
+		a.setNmAlimento("aaa");
 		try {
 			dao.atualizar(a);
 			System.out.println("Produto alterado");
@@ -84,18 +84,18 @@ public class TesteAlimento {
 //		}
 //	
 		PeriodoAlimentoDAO dao1 = DAOFactory.getPeriodoAlimento();
-		
-		
-				List<PeriodoAlimento> lista1 = dao1.listarTodos();
-				for (PeriodoAlimento p : lista1) {
-					System.out.println(p.getDsPeriodo());
-				}
-		dao.remover(13);
-		System.out.println("ok");
-	}
-	
 
+		
+		Alimento aa = new Alimento();
+		aa = dao.buscarPorId(3);
+		aa.setNmAlimento("Bis");
+		try {
+			dao.atualizar(aa);
+			
+		} catch (DBException db) {
+			db.printStackTrace();
+		}
 	
-	
+	}
 
 }
