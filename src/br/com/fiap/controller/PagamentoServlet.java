@@ -82,7 +82,7 @@ public class PagamentoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		List<TipoPagamento> listaTipoPag = tipoPagDAO.listarTodos();
 		carregarOpcoesPagamento(request);
-		request.getRequestDispatcher("pagamentos.jsp").forward(request, response);
+		request.getRequestDispatcher("cadastrarPagamento.jsp").forward(request, response);
 	}
 
 	private void abrirFormEdicao(HttpServletRequest request, HttpServletResponse response)
@@ -90,7 +90,7 @@ public class PagamentoServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("codigo"));
 		Pagamento pagamento = dao.buscarPorId(id);
 		request.setAttribute("pagamento", pagamento);
-		request.getRequestDispatcher("edicao-pagamento.jsp").forward(request, response);
+		request.getRequestDispatcher("editarPagamento.jsp").forward(request, response);
 		;
 	}
 

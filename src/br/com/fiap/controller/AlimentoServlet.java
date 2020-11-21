@@ -119,7 +119,7 @@ public class AlimentoServlet extends HttpServlet {
 			String nmAlimento = request.getParameter("nmAlimento");
 			Integer qtdeAlimento = Integer.parseInt(request.getParameter("qtdeAlimento"));
 			Integer qtdeCaloria = Integer.parseInt(request.getParameter("qtdeCaloria"));
-			Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+			Integer idUsuario = Integer.parseInt(request.getParameter("usuario"));
 			Integer idPeriodo = Integer.parseInt(request.getParameter("periodo"));
 			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			Calendar dtCadastro = Calendar.getInstance();
@@ -130,7 +130,7 @@ public class AlimentoServlet extends HttpServlet {
 
 			Alimento alimento = new Alimento(codigo, nmAlimento, qtdeAlimento, qtdeCaloria, idUsuario, dtCadastro);
 			alimento.setPeriodoAlimento(periodo);
-
+			
 			dao.atualizar(alimento);
 
 			request.setAttribute("msg", "Alimento atulizado.");
@@ -141,6 +141,8 @@ public class AlimentoServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("erro", "Por favor, valide os dados.");
 		}
+		
+		
 		listar(request, response);
 	}
 
