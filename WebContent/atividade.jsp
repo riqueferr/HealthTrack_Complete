@@ -47,10 +47,11 @@
 			</header>
 			<div class="main-content">
 				<div class="panel-row">
-					<button class="panel panel-50" a-view="cadastrarAtividade.jsp"
-						onclick="fetchContent(this)" a-folder="atividades">
-						<i class="fas fa-plus"></i> Cadastrar atividade física
-					</button>
+					<a href="atividade?acao=abrir-form-cadastro">
+						<button class="panel panel-50">
+							<i class="fas fa-plus"></i> Cadastrar atividade física
+						</button>
+					</a>
 				</div>
 				<c:if test="${not empty msg }">
 					<div class="alert alert-success">${msg }</div>
