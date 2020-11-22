@@ -80,7 +80,11 @@
 								usuário</label> <input id="id_usuario" type="number"
 								class="form-control" name="idusuario">
 						</div>
+						
 						<button type="submit" class="btn btn-primary">Cadastrar</button>
+						
+						<a href="pressao?acao=listar" class="btn btn-danger">Cancelar</a>
+						
 					</form>
 				</div>
 			</div>

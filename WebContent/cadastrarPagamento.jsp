@@ -64,7 +64,7 @@
 				
 				<form action="pagamento" method="post">
 					<input type="hidden" value="cadastrar" name="acao">
-					<div class="form-group">
+					<div class="form-group" style="color:white">
 					
 					<label for="id-pagamento">Tipo do Pagamento</label> <select
 							name="tipoPagamento" id="id-pagamento" class="form-control">
@@ -75,16 +75,16 @@
 						</select>
 					</div>
 					
-					<div class="form-group">
+					<div class="form-group" style="color:white">
 					
 						<label for="id_qtdparcela">Quantidade de Parcelas</label> <input
 							type="number" class="form-control" id="id_qtdparcela" name="qtdeParcela">
 					</div>
-					<div class="form-group">
+					<div class="form-group" style="color:white">
 						<label for="id-valor">Valor Total</label> <input type="number"
 							class="form-control" id="id-valor" name="vlTotal">
 					</div>
-					<div class="form-group">
+					<div class="form-group" style="color:white">
 						<label for="id-usuario">Usuário</label> <input id="id-usuario"
 							type=number class="form-control" name="idUsuario">
 						</div>
@@ -92,7 +92,8 @@
 							<label for="weight">Data</label> <input type="date"
 								class="form-control" id="weight">
 						</div> -->
-					<button type="submit" class="btn">Cadastrar</button>
+					<button type="submit" class="btn btn-primary">Cadastrar</button>
+					<a href="pagamento?acao=listar" class="btn btn-danger">Cancelar</a>
 				</form>
 			</div>
 		</main>

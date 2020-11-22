@@ -60,7 +60,7 @@
 					<input type="hidden" value="cadastrar" name="acao">
 						<div class="row testeCorBranca">
 							<div class="col-md-2">
-								<div class="form-group">
+								<div class="form-group" style="color:white">
 									<label for="id_peso" style="color:white">Novo peso</label>
 									 <input type="text"
 										class="form-control " id="id_peso" name="peso" 
@@ -84,7 +84,8 @@
 						</div>
 						<a href="imc?acao=cadastrar">
 							<button type="submit" class="btn btn-primary">Salvar</button>
-						</a>
+							</a>
+						<a href="imc?acao=listar" class="btn btn-danger">Cancelar</a>
 
 					</form>
 				</div>
