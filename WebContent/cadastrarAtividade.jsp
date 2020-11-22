@@ -65,7 +65,7 @@
 
 				<form action="atividade" method="post">
 					<input type="hidden" value="cadastrar" name="acao">
-					<div class="form-group">
+					<div class="form-group" style="color:white">
 
 						<label for="id-tipoatv">Tipo da Atividade</label> <select
 							name="tipoAtividade" id="id-tipoatv" class="form-control">
@@ -75,16 +75,16 @@
 							</c:forEach>
 						</select>
 					</div>
-					<div class="form-group">
+					<div class="form-group" style="color:white">
 					
 						<label for="id-tempoatv">Tempo da Atividade</label> <input
 							type="number" class="form-control" id="id-tempoatv" name="vlTempo">
 					</div>
-					<div class="form-group">
+					<div class="form-group" style="color:white">
 						<label for="id-distancia">Distância</label> <input type="number"
 							class="form-control" id="id-distancia" name="vlDistancia">
 					</div>
-					<div class="form-group">
+					<div class="form-group" style="color:white">
 						<label for="id-usuario">Usuario</label> <input id="id-usuario"
 							type=number class="form-control" name="idUsuario">
 					</div>
@@ -92,7 +92,9 @@
 							<label for="weight">Data</label> <input type="date"
 								class="form-control" id="weight">
 						</div> -->
-					<button type="submit" class="btn">Cadastrar</button>
+					<button type="submit" class="btn btn-primary">Cadastrar</button>
+					<a href="atividade?acao=listar" class="btn btn-danger">Cancelar</a>
+					
 				</form>
 			</div>
 		</main>
