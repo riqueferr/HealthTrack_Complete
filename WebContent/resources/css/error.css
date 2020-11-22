@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+
+body, html {
+  font-family: 'acumin-pro', sans-serif;
+  background-color:white;
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  
+}
+
+.container h3 {
+font-size: 350px;
+font-weight: bold;
+color: #ff5b03;
+margin-bottom: -20px;
+}

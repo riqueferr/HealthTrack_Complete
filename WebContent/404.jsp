@@ -1,22 +1,46 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.0">
-    <jsp:directive.page language="java"
-        contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" />
-    <jsp:text>
-        <![CDATA[ <?xml version="1.0" encoding="ISO-8859-1" ?> ]]>
-    </jsp:text>
-    <jsp:text>
-        <![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
-    </jsp:text>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+<meta charset="ISO-8859-1">
+<jsp:include page="header.jsp"></jsp:include>
 </head>
 <body>
-<f:view>
-	oisadjdajiodsajoi
-</f:view>
+	
+	<div class="container">
+			<h3>4<img src="resources/images/ico.png"></img>4</h3>
+			<p>Page not found.</p>
+			<a href="dashboard.jsp">Voltar</a>
+			</div>
+
+	<jsp:include page="footer.jsp"></jsp:include>
+
+	<!-- Modal -->
+	<div class="modal fade" id="excluirModal" tabindex="-1" role="dialog"
+		aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">DESEJA REALMENTE EXCLUIR?</div>
+				<div class="modal-footer">
+					<form action="alimento" method="post">
+						<input type="hidden" name="acao" value="excluir"> <input
+							type="hidden" name="codigo" id="codigoExcluir">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Não</button>
+						<button type="submit" class="btn btn-primary">Sim</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
-</jsp:root>

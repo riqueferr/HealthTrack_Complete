@@ -90,6 +90,7 @@ public class PagamentoServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("codigo"));
 		Pagamento pagamento = dao.buscarPorId(id);
 		request.setAttribute("pagamento", pagamento);
+		carregarOpcoesPagamento(request);
 		request.getRequestDispatcher("editarPagamento.jsp").forward(request, response);
 		;
 	}
@@ -118,10 +119,10 @@ public class PagamentoServlet extends HttpServlet {
 
 	private void excluir(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int codigo = Integer.parseInt("codigo");
+		int codigo = Integer.parseInt(request.getParameter("codigo"));
 		try {
 			dao.remover(codigo);
-			request.setAttribute("msg", "Produto removido");
+			request.setAttribute("msg", "Pagamento removido");
 		} catch (DBException e) {
 			e.printStackTrace();
 			request.setAttribute("erro", "Erro ao excluir");
@@ -130,6 +131,33 @@ public class PagamentoServlet extends HttpServlet {
 	}
 
 	private void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		try {
+			Integer codigo = Integer.parseInt(request.getParameter("codigo"));
+			Integer qtdeParcela = Integer.parseInt(request.getParameter("qtdeParcela"));
+			Double vlTotal = Double.parseDouble(request.getParameter("vlTotal"));
+			Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+			Integer idTipo = Integer.parseInt(request.getParameter("tipoPagamento"));
+			Calendar dtCadastro = Calendar.getInstance();
+
+			TipoPagamento tp = new TipoPagamento();
+			tp.setCodigotp(idTipo);
+			
+			Pagamento pagamento = new Pagamento(codigo, qtdeParcela, vlTotal, idUsuario, dtCadastro);
+			pagamento.setTipoPagamento(tp);
+			
+			dao.atualizar(pagamento);
+			
+			request.setAttribute("msg", "Pagamento Atualizado!");
+		} catch (DBException db) {
+			db.printStackTrace();
+			request.setAttribute("erro", "Erro ao cadastrar!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("erro", "Por favor, valide os dados!");
+		}
+		
+		listar(request, response);
 
 	}
 
@@ -143,14 +171,14 @@ public class PagamentoServlet extends HttpServlet {
 			Calendar dtCadastro = Calendar.getInstance();
 
 			TipoPagamento tp = new TipoPagamento();
-			tp.setCodigo(idTipo);
+			tp.setCodigotp(idTipo);
 			
 			Pagamento pagamento = new Pagamento(0, qtdeParcela, vlTotal, idUsuario, dtCadastro);
 			pagamento.setTipoPagamento(tp);
 			
 			dao.cadastrar(pagamento);
 			
-			request.setAttribute("msg", "Alimento cadastrado!");
+			request.setAttribute("msg", "Pagamento cadastrado!");
 		} catch (DBException db) {
 			db.printStackTrace();
 			request.setAttribute("erro", "Erro ao cadastrar!");

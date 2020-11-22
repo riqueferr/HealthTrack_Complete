@@ -4,16 +4,16 @@ import java.util.Calendar;
 
 public class Pagamento {
 
-	private Integer idPagamento;
+	private Integer codigo;
 	private Integer qtdeParcela;
 	private Double vlTotal;
 	private Integer idUsuario;
 	private Calendar dtCadastro;
 	private TipoPagamento tipoPagamento;
 
-	public Pagamento(Integer idPagamento, Integer qtdeParcela, Double vlTotal, Integer idUsuario, Calendar dtCadastro) {
+	public Pagamento(Integer codigo, Integer qtdeParcela, Double vlTotal, Integer idUsuario, Calendar dtCadastro) {
 		super();
-		this.idPagamento = idPagamento;
+		this.codigo = codigo;
 		this.qtdeParcela = qtdeParcela;
 		this.vlTotal = vlTotal;
 		this.idUsuario = idUsuario;
@@ -24,13 +24,7 @@ public class Pagamento {
 		super();
 	}
 
-	public Integer getIdPagamento() {
-		return idPagamento;
-	}
 
-	public void setIdPagamento(Integer idPagamento) {
-		this.idPagamento = idPagamento;
-	}
 
 	public Integer getQtdeParcela() {
 		return qtdeParcela;
@@ -70,6 +64,14 @@ public class Pagamento {
 
 	public void setTipoPagamento(TipoPagamento tipoPagamento) {
 		this.tipoPagamento = tipoPagamento;
+	}
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
 }

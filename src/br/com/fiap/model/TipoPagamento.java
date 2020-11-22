@@ -2,11 +2,11 @@ package br.com.fiap.model;
 
 public class TipoPagamento {
 
-    private Integer codigo;
+    private Integer codigotp;
     private String dsTipoPagamento;
 
-    public TipoPagamento(Integer codigo, String dsTipoPagamento) {
-        this.setCodigo(codigo);
+    public TipoPagamento(Integer codigotp, String dsTipoPagamento) {
+        this.codigotp = codigotp;
         this.dsTipoPagamento = dsTipoPagamento;
     }
 
@@ -23,13 +23,15 @@ public class TipoPagamento {
         this.dsTipoPagamento = dsTipoPagamento;
     }
 
-	public Integer getCodigo() {
-		return codigo;
+	public Integer getCodigotp() {
+		return codigotp;
 	}
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+	public void setCodigotp(Integer codigotp) {
+		this.codigotp = codigotp;
 	}
+
+
 
 
 }
