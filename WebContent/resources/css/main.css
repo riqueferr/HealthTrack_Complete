@@ -3,6 +3,11 @@ body, html {
     font-family: 'acumin-pro', sans-serif;
 }
 
+#botaozin {
+	margin: 0 auto;
+}
+
+
 main {
     display: block;
     height: 100%;

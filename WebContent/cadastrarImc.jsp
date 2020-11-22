@@ -63,7 +63,7 @@
 								<div class="form-group" style="color:white">
 									<label for="id_peso" style="color:white">Novo peso</label>
 									 <input type="text"
-										class="form-control " id="id_peso" name="peso" 
+										class="form-control " id="id_peso" name="peso" placeholder="Ex: 95.0"
 										>
 								</div>
 							</div>
@@ -71,20 +71,20 @@
 								<div class="form-group">
 									<label for="id_altura" style="color:white">Nova altura</label>
 									 <input type="text"
-										class="form-control" id="id_altura" name="altura">
+										class="form-control" id="id_altura" name="altura" placeholder="Ex: 1.75">
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 									<label for="id_usuario" style="color:white">ID Usuario</label>
 									 <input type="text"
-										class="form-control" id="id_usuario" name="idUsuario">
+										class="form-control" id="id_usuario" name="idUsuario" placeholder="Ex: 8001">
 								</div>
 							</div>
 						</div>
 						<a href="imc?acao=cadastrar">
-							<button type="submit" class="btn btn-primary">Salvar</button>
-							</a>
+							<button type="submit" id="botaozin" class="btn btn-primary">Salvar</button>
+						</a>
 						<a href="imc?acao=listar" class="btn btn-danger">Cancelar</a>
 
 					</form>

@@ -68,20 +68,20 @@
 						<div class="form-group">
 							<label for="id_sistolica" style="color: white">Pressão
 								Sistólica</label> <input id="id_sistolica" type="number"
-								class="form-control" name="sistolica">
+								class="form-control" name="sistolica" placeholder="Ex: 140">
 						</div>
 						<div class="form-group">
 							<label for="id_diastolica" style="color: white">Pressão
 								Diastólica</label> <input id="id_diastolica" type="number"
-								class="form-control" name="diastolica">
+								class="form-control" name="diastolica" placeholder="Ex: 120">
 						</div>
 						<div class="form-group">
 							<label for="id_usuario" style="color: white">ID do
 								usuário</label> <input id="id_usuario" type="number"
-								class="form-control" name="idusuario">
+								class="form-control" name="idusuario" placeholder="Ex: 8001">
 						</div>
 						
-						<button type="submit" class="btn btn-primary">Cadastrar</button>
+						<button type="submit" id="botaozin" class="btn btn-primary">Cadastrar</button>
 						
 						<a href="pressao?acao=listar" class="btn btn-danger">Cancelar</a>
 						
