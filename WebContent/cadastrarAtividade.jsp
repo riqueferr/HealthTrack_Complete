@@ -66,7 +66,7 @@
 							name="tipoAtividade" id="id-tipoatv" class="form-control">
 							<option value="0">Selecione</option>
 							<c:forEach items="${tipoAtividade }" var="tatv">
-								<option value="${tatv.idTipoAtv }">${tatv.dsTipoAtv }</option>
+								<option value="${tatv.codigo }">${tatv.dsTipoAtv }</option>
 							</c:forEach>
 						</select>
 					</div>
