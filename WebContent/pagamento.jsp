@@ -76,14 +76,23 @@
 						<tbody>
 							<c:forEach items="${pagamentos }" var="pagamento">
 								<tr>
-									<td>${pagamento.idPagamento }</td>
+									<td>${pagamento.codigo }</td>
 									<td><fmt:formatDate value="${pagamento.dtCadastro.time }"
 											pattern="dd/MM/yyyy" /></td>
 									<td>${pagamento.qtdeParcela }</td>
 									<td>R$${pagamento.vlTotal }</td>
 									<td>${pagamento.tipoPagamento.dsTipoPagamento }</td>
-									<td><i class="fas fa-edit"></i></td>
-									<td><i class="fas fa-trash-alt"></i></td>
+									<td><c:url value="pagamento" var="link">
+											<c:param name="acao" value="abrir-form-edicao" />
+											<c:param name="codigo" value="${pagamento.codigo }" />
+										</c:url> <a href="${link }">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Editar</button>
+									</a></td>
+									<td><button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#excluirModal"
+											onclick="codigoExcluir.value = ${pagamento.codigo}">
+											Excluir</button></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -93,5 +102,30 @@
 		</main>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="excluirModal" tabindex="-1" role="dialog"
+		aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">DESEJA REALMENTE EXCLUIR?</div>
+				<div class="modal-footer">
+					<form action="pagamento" method="post">
+						<input type="hidden" name="acao" value="excluir"> <input
+							type="hidden" name="codigo" id="codigoExcluir">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Não</button>
+						<button type="submit" class="btn btn-primary">Sim</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

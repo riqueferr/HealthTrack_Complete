@@ -92,7 +92,7 @@ public class PagamentoDAOImpl implements PagDAO {
 
 			stmt.setInt(1, pagamento.getQtdeParcela());
 			stmt.setDouble(2, pagamento.getVlTotal());
-			stmt.setInt(3, pagamento.getTipoPagamento().getCodigo());
+			stmt.setInt(3, pagamento.getTipoPagamento().getCodigotp());
 			stmt.setInt(4, pagamento.getIdUsuario());
 			java.sql.Date dataAtual = new java.sql.Date(pagamento.getDtCadastro().getTimeInMillis());
 			stmt.setDate(5, dataAtual);
@@ -118,16 +118,16 @@ public class PagamentoDAOImpl implements PagDAO {
 		try {
 			conexao = ConexaoBDManager.getInstante().obterConexao();
 			String sql = "UPDATE T_HTL_PAG SET QT_PARCELA = ?, VL_TOTAL = ?, T_HTL_TIPO_ID_TIPO = ?,"
-					+ " T_HTL_USUARIO_ID_USUARIO ?, DT_CADASTRO = ?"
+					+ " T_HTL_USUARIO_ID_USUARIO = ?, DT_CADASTRO = ?"
 					+ " WHERE ID_PAG = ?";
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, pagamento.getQtdeParcela());
 			stmt.setDouble(2, pagamento.getVlTotal());
-			stmt.setInt(3, pagamento.getTipoPagamento().getCodigo());
+			stmt.setInt(3, pagamento.getTipoPagamento().getCodigotp());
 			stmt.setInt(4, pagamento.getIdUsuario());
 			java.sql.Date data = new java.sql.Date(pagamento.getDtCadastro().getTimeInMillis());
 			stmt.setDate(5, data);
-			stmt.setInt(6, pagamento.getIdPagamento());
+			stmt.setInt(6, pagamento.getCodigo());
 
 			stmt.executeUpdate();
 

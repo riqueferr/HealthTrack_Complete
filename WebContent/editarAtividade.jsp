@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,29 +64,27 @@
 				</c:if>
 
 				<form action="atividade" method="post">
-				
+
 					<input type="hidden" value="editar" name="acao"> <input
 						type="hidden" value="${atividade.codigo }" name="codigo">
-						
+
 					<div class="form-group">
-					
-						<label for="id-tipoatv">Tipo da Atividade</label> <select name="tipoAtividade"
-							id="id-tipoatv" class="form-control">
-							
+
+						<label for="id-tipoatv">Tipo da Atividade</label> <select
+							name="tipoAtividade" id="id-tipoatv" class="form-control">
+
 							<option value="0">Selecione</option>
 							<c:forEach items="${tipoAtividade }" var="tatv">
-								<c:if
-									test="${tatv.codigo == atividade.tipoAtv.codigo }">
+								<c:if test="${tatv.codigo == atividade.tipoAtv.codigo }">
 									<option value="${tatv.codigo }" selected>${tatv.dsTipoAtv }</option>
 								</c:if>
-								<c:if
-									test="${tatv.codigo != atividade.tipoAtv.codigo }">
+								<c:if test="${tatv.codigo != atividade.tipoAtv.codigo }">
 									<option value="${tatv.codigo }">${tatv.dsTipoAtv }</option>
 								</c:if>
 							</c:forEach>
-							
+
 						</select>
-						
+
 					</div>
 					<div class="form-group">
 						<label for="id-tempo">Tempo da Atividade</label> <input
@@ -108,7 +107,7 @@
 							value="${atividade.dtCadastro.time }">
 					</div> -->
 					<input type="submit" class="btn btn-primary" value="Salvar">
-					<a href="alimento?acao=listar" class="btn btn-danger">Cancelar</a>
+					<a href="atividade?acao=listar" class="btn btn-danger">Cancelar</a>
 				</form>
 			</div>
 		</main>
