@@ -100,7 +100,7 @@
 											<button type="button" class="btn btn-secondary"
 												data-dismiss="modal">Editar</button>
 									</a></td>
-									<td><button type="button" class="btn btn-primary"
+									<td><button type="button" class="btn btn-danger"
 											data-toggle="modal" data-target="#excluirModal"
 											onclick="codigoExcluir.value = ${imc.codigo}">
 											Excluir</button></td>
@@ -132,7 +132,7 @@
 							type="hidden" name="codigo" id="codigoExcluir">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Não</button>
-						<button type="submit" class="btn btn-primary">Sim</button>
+						<button type="submit" class="btn btn-danger">Sim</button>
 					</form>
 				</div>
 			</div>

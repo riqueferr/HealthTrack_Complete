@@ -87,17 +87,17 @@
 
 					</div>
 					<div class="form-group">
-						<label for="id-tempo">Tempo da Atividade</label> <input
+						<label for="id-tempo" style="color:white">Tempo da Atividade</label> <input
 							type="text" class="form-control" id="id-tempo" name="vlTempo"
 							value="${atividade.vlTempo }">
 					</div>
 					<div class="form-group">
-						<label for="id-distancia">Distância</label> <input type="text"
+						<label for="id-distancia" style="color:white">Distância</label> <input type="text"
 							class="form-control" id="id-distancia" name="vlDistancia"
 							value="${atividade.vlDistancia }">
 					</div>
 					<div class="form-group">
-						<label for="id-usuario">Usuário</label> <input type="text"
+						<label for="id-usuario" style="color:white">ID Usuário</label> <input type="text"
 							class="form-control" id="id-usuario" name="idUsuario"
 							value="${atividade.idUsuario }">
 					</div>

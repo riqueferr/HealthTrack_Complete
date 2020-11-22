@@ -70,7 +70,7 @@
 
 					<div class="form-group">
 
-						<label for="id-pagamento">Tipo do Pagamento</label> <select
+						<label for="id-pagamento" style="color: white">Tipo do Pagamento</label> <select
 							name="tipoPagamento" id="id-pagamento" class="form-control">
 
 							<option value="0">Selecione</option>
@@ -91,17 +91,17 @@
 
 					<div class="form-group">
 
-						<label for="id_qtdparcela">Quantidade de Parcelas</label> <input
+						<label for="id_qtdparcela" style="color: white">Quantidade de Parcelas</label> <input
 							type="text" class="form-control" id="id_qtdparcela"
 							name="qtdeParcela" value="${pagamento.qtdeParcela }">
 					</div>
 					<div class="form-group">
-						<label for="id-valor">Valor Total</label> <input type="text"
+						<label for="id-valor" style="color: white">Valor Total</label> <input type="text"
 							class="form-control" id="id-valor" name="vlTotal"
 							value="${pagamento.vlTotal }">
 					</div>
 					<div class="form-group">
-						<label for="id-usuario">Usuário</label> <input id="id-usuario"
+						<label for="id-usuario" style="color: white">ID Usuário</label> <input id="id-usuario"
 							type=text class="form-control" name="idUsuario"
 							value="${pagamento.idUsuario }">
 					</div>
