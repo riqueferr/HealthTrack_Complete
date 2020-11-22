@@ -46,10 +46,12 @@
 
 				<i id="iconMenu " onclick="responsiveSidebar() "
 					class="fas fa-bars "> </i>
-				<c:if test="${not empty user }"> ${user }
+				<div style="color: white"> Olá, 
+					<c:if test="${not empty user }"> ${user }
 				</c:if>
-				<a href="login.jsp""><i class="fas fa-sign-out-alt "></i> &nbsp;
-					Logout</a>
+				</div>
+				<a href="login?acao=sair"><i class="fas fa-sign-out-alt "></i>
+					&nbsp; Logout</a>
 			</header>
 
 			<!-- FIM MENU -->
