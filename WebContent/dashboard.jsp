@@ -33,8 +33,6 @@
 					href="alimento?acao=listar">ALIMENTOS</a></li>
 				<li><i class="fas fa-credit-card"></i> <a
 					href="pagamento?acao=listar">PAGAMENTOS</a></li>
-				<li><i class="fas fa-home"></i> <a
-					href="endereco?acao=listar">ENDEREÇOS</a></li>
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
 					<a href="login?acao=sair">LOGOUT</a></li>
 			</ul>
@@ -46,10 +44,13 @@
 
 				<i id="iconMenu " onclick="responsiveSidebar() "
 					class="fas fa-bars "> </i>
-				<c:if test="${not empty user }"> ${user }
+					<div style="color: white"> Olá, 
+					<c:if test="${not empty user }"> ${user }
 				</c:if>
-				<a href="login.jsp""><i class="fas fa-sign-out-alt "></i> &nbsp;
-					Logout</a>
+				</div>
+				<a href="login?acao=sair"><i class="fas fa-sign-out-alt "></i>
+					&nbsp; Logout</a>
+					
 			</header>
 
 			<!-- FIM MENU -->
