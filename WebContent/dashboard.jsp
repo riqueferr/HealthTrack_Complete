@@ -32,9 +32,9 @@
 				</li>
 				<li><i class="fas fa-utensils"></i> <a
 					href="alimento?acao=listar">ALIMENTOS</a></li>
-				<li><i class="fas fa-utensils"></i> <a
+				<li><i class="fas fa-credit-card"></i> <a
 					href="pagamento?acao=listar">PAGAMENTOS</a></li>
-				<li><i class="fas fa-utensils"></i> <a
+				<li><i class="fas fa-home"></i> <a
 					href="endereco?acao=listar">ENDEREÇOS</a></li>
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
 					<a href="login?acao=sair">LOGOUT</a></li>
