@@ -136,15 +136,14 @@ public class PagamentoServlet extends HttpServlet {
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			String nmAlimento = request.getParameter("nmAlimento");
 			Integer qtdeParcela = Integer.parseInt(request.getParameter("qtdeParcela"));
 			Double vlTotal = Double.parseDouble(request.getParameter("vlTotal"));
 			Integer idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
-			Integer idTipo = Integer.parseInt(request.getParameter("periodo"));
+			Integer idTipo = Integer.parseInt(request.getParameter("tipoPagamento"));
 			Calendar dtCadastro = Calendar.getInstance();
 
 			TipoPagamento tp = new TipoPagamento();
-			tp.setIdTipo(idTipo);
+			tp.setCodigo(idTipo);
 			
 			Pagamento pagamento = new Pagamento(0, qtdeParcela, vlTotal, idUsuario, dtCadastro);
 			pagamento.setTipoPagamento(tp);

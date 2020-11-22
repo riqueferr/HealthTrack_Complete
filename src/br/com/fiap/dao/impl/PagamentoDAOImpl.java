@@ -92,7 +92,7 @@ public class PagamentoDAOImpl implements PagDAO {
 
 			stmt.setInt(1, pagamento.getQtdeParcela());
 			stmt.setDouble(2, pagamento.getVlTotal());
-			stmt.setInt(3, pagamento.getTipoPagamento().getIdTipo());
+			stmt.setInt(3, pagamento.getTipoPagamento().getCodigo());
 			stmt.setInt(4, pagamento.getIdUsuario());
 			java.sql.Date dataAtual = new java.sql.Date(pagamento.getDtCadastro().getTimeInMillis());
 			stmt.setDate(5, dataAtual);
@@ -123,7 +123,7 @@ public class PagamentoDAOImpl implements PagDAO {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, pagamento.getQtdeParcela());
 			stmt.setDouble(2, pagamento.getVlTotal());
-			stmt.setInt(3, pagamento.getTipoPagamento().getIdTipo());
+			stmt.setInt(3, pagamento.getTipoPagamento().getCodigo());
 			stmt.setInt(4, pagamento.getIdUsuario());
 			java.sql.Date data = new java.sql.Date(pagamento.getDtCadastro().getTimeInMillis());
 			stmt.setDate(5, data);
