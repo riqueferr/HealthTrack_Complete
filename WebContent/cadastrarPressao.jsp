@@ -6,6 +6,8 @@
 <html>
 <head>
 <jsp:include page="header.jsp" />
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
 
@@ -17,18 +19,16 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li class="selected"><i class="fas fa-chart-line"></i> <a
+				<li><i class="fas fa-chart-line"></i> <a
 					href="dashboard.jsp">DASHBOARD</a></li>
 				<li><i class="fas fa-user-circle"></i> <a href="perfil.jsp">PERFIL</a>
 				</li>
 				<li><i class="fas fa-weight "></i> <a href="imc?acao=listar">PESO
 						E ALTURA</a></li>
-				<li><i class="fas fa-heartbeat"></i> <a
+				<li class="selected"><i class="fas fa-heartbeat"></i> <a
 					href="pressao?acao=listar">PRESSÃO ARTERIAL</a></li>
-				<li><i class="fas fa-running"></i> <a
-					href="atividade?acao=listar">ATIVIDADES FÍSICAS</a></li>
-				<li><i class="fas fa-calculator"></i> <a href="imc.jsp">IMC</a>
-				</li>
+				<li><i class="fas fa-running"></i> <a href="atividade?acao=listar">ATIVIDADES
+						FÍSICAS</a></li>
 				<li><i class="fas fa-utensils"></i> <a
 					href="alimento?acao=listar">ALIMENTOS</a></li>
 				<li><i class="fas fa-utensils"></i> <a
@@ -48,12 +48,11 @@
 					class="fas fa-bars "> </i>
 				<c:if test="${not empty user }"> ${user }
 				</c:if>
-				<a href="login.jsp""><i class="fas fa-sign-out-alt "></i> &nbsp;
+				<a href="login.jsp"><i class="fas fa-sign-out-alt "></i> &nbsp;
 					Logout</a>
 			</header>
 
 			<!-- FIM MENU -->
-
 			<div class="container-fluid">
 				<c:if test="${not empty msg }">
 					<div class="alert alert-success">${msg }</div>
