@@ -19,16 +19,15 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><i class="fas fa-chart-line"></i> <a
-					href="dashboard.jsp">DASHBOARD</a></li>
+				<li><i class="fas fa-chart-line"></i> <a href="dashboard.jsp">DASHBOARD</a></li>
 				<li><i class="fas fa-user-circle"></i> <a href="perfil.jsp">PERFIL</a>
 				</li>
-				<li class="selected"><i class="fas fa-weight "></i> <a href="imc?acao=listar">PESO
-						E ALTURA</a></li>
+				<li class="selected"><i class="fas fa-weight "></i> <a
+					href="imc?acao=listar">PESO E ALTURA</a></li>
 				<li><i class="fas fa-heartbeat"></i> <a
 					href="pressao?acao=listar">PRESSÃO ARTERIAL</a></li>
-				<li><i class="fas fa-running"></i> <a href="atividade?acao=listar">ATIVIDADES
-						FÍSICAS</a></li>
+				<li><i class="fas fa-running"></i> <a
+					href="atividade?acao=listar">ATIVIDADES FÍSICAS</a></li>
 				<li><i class="fas fa-utensils"></i> <a
 					href="alimento?acao=listar">ALIMENTOS</a></li>
 				<li><i class="fas fa-credit-card"></i> <a
@@ -44,13 +43,14 @@
 
 				<i id="iconMenu " onclick="responsiveSidebar() "
 					class="fas fa-bars "> </i>
-					<div style="color: white"> Olá, 
+				<div style="color: white">
+					Olá,
 					<c:if test="${not empty user }"> ${user }
 				</c:if>
 				</div>
 				<a href="login?acao=sair"><i class="fas fa-sign-out-alt "></i>
 					&nbsp; Logout</a>
-					
+
 			</header>
 
 			<!-- FIM MENU -->
@@ -85,7 +85,7 @@
 						</div>
 						<a href="imc?acao=editar">
 							<button type="submit" class="btn btn-primary">Salvar</button>
-						</a>
+						</a> <a href="pressao?acao=listar" class="btn btn-danger">Cancelar</a>
 
 					</form>
 				</div>

@@ -95,7 +95,7 @@
 								</c:if>
 							</c:forEach>
 						</select> 
-						<label for="id-usuario">Usuario</label> <input id="id-usuario"
+						<label for="id-usuario">ID Usuario</label> <input id="id-usuario"
 							type=number class="form-control" name="usuario"
 							value="${alimento.idUsuario }">
 					</div>

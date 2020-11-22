@@ -80,8 +80,7 @@
 								value="${pressao.nrDiastolica }">
 						</div>
 						<div class="form-group">
-							<label for="id_usuario" style="color: white">ID do
-								usuário</label> <input id="id_usuario" type="number"
+							<label for="id_usuario" style="color: white">ID Usuário</label> <input id="id_usuario" type="number"
 								class="form-control" name="idusuario"
 								value="${pressao.idUsuario }">
 						</div>

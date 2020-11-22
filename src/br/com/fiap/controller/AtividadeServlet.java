@@ -108,7 +108,7 @@ public class AtividadeServlet extends HttpServlet {
 		int codigo = Integer.parseInt(request.getParameter("codigo"));
 		try {
 			dao.remover(codigo);
-			request.setAttribute("msg", "Produto removido");
+			request.setAttribute("msg", "Atividade removida");
 		} catch (DBException e) {
 			e.printStackTrace();
 			request.setAttribute("erro", "Erro ao excluir");
@@ -134,7 +134,7 @@ public class AtividadeServlet extends HttpServlet {
 			
 			dao.atualizar(atividade);
 
-			request.setAttribute("msg", "Alimento atulizado.");
+			request.setAttribute("msg", "Atividade atulizada.");
 		} catch (DBException db) {
 			db.printStackTrace();
 			request.setAttribute("erro", "Erro ao atualizar.");
