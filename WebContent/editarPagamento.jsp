@@ -2,7 +2,6 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,20 +19,19 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><i class="fas fa-chart-line"></i> <a href="dashboard.jsp">DASHBOARD</a></li>
+				<li><i class="fas fa-chart-line"></i> <a
+					href="dashboard.jsp">DASHBOARD</a></li>
 				<li><i class="fas fa-user-circle"></i> <a href="perfil.jsp">PERFIL</a>
 				</li>
 				<li><i class="fas fa-weight "></i> <a href="imc?acao=listar">PESO
 						E ALTURA</a></li>
 				<li><i class="fas fa-heartbeat"></i> <a
 					href="pressao?acao=listar">PRESSÃO ARTERIAL</a></li>
-				<li class="selected"><i class="fas fa-running"></i> <a
-					href="atividade?acao=listar">ATIVIDADES FÍSICAS</a></li>
-				<li><i class="fas fa-calculator"></i> <a href="imc.jsp">IMC</a>
-				</li>
+				<li><i class="fas fa-running"></i> <a href="atividade?acao=listar">ATIVIDADES
+						FÍSICAS</a></li>
 				<li><i class="fas fa-utensils"></i> <a
 					href="alimento?acao=listar">ALIMENTOS</a></li>
-				<li><i class="fas fa-utensils"></i> <a
+				<li class="selected"><i class="fas fa-utensils"></i> <a
 					href="pagamento?acao=listar">PAGAMENTOS</a></li>
 				<li><i class="fas fa-utensils"></i> <a
 					href="endereco?acao=listar">ENDEREÇOS</a></li>
@@ -50,9 +48,11 @@
 					class="fas fa-bars "> </i>
 				<c:if test="${not empty user }"> ${user }
 				</c:if>
-				<a href="login.jsp"><i class="fas fa-sign-out-alt "></i> &nbsp;
+				<a href="login.jsp""><i class="fas fa-sign-out-alt "></i> &nbsp;
 					Logout</a>
 			</header>
+
+			<!-- FIM MENU -->
 
 			<div class="container-fluid">
 				<c:if test="${not empty msg }">

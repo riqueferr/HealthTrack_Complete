@@ -5,10 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="header.jsp" />
 <meta charset="ISO-8859-1">
-<jsp:include page="header.jsp"></jsp:include>
+<title>Insert title here</title>
 </head>
 <body>
+
 	<div class="flex-dashboard">
 		<sidebar id="sidebar">
 		<div class="sidebar-title">
@@ -17,33 +19,40 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><i class="fas fa-chart-line"></i> <a href="dashboard.jsp">DASHBOARD</a></li>
+				<li><i class="fas fa-chart-line"></i> <a
+					href="dashboard.jsp">DASHBOARD</a></li>
 				<li><i class="fas fa-user-circle"></i> <a href="perfil.jsp">PERFIL</a>
 				</li>
-				<li><i class="fas fa-weight "></i> <a href="peso.jsp">PESO
+				<li><i class="fas fa-weight "></i> <a href="imc?acao=listar">PESO
 						E ALTURA</a></li>
-				<li><i class="fas fa-heartbeat"></i> <a href="pressao.jsp">PRESSÃO
-						ARTERIAL</a></li>
-				<li><i class="fas fa-running"></i> <a href="atividade.jsp">ATIVIDADES
+				<li><i class="fas fa-heartbeat"></i> <a
+					href="pressao?acao=listar">PRESSÃO ARTERIAL</a></li>
+				<li><i class="fas fa-running"></i> <a href="atividade?acao=listar">ATIVIDADES
 						FÍSICAS</a></li>
-				<li><i class="fas fa-calculator"></i> <a href="imc.jsp">IMC</a>
-				</li>
 				<li class="selected"><i class="fas fa-utensils"></i> <a
-					href="alimento.jsp">ALIMENTOS</a></li>
+					href="alimento?acao=listar">ALIMENTOS</a></li>
+				<li><i class="fas fa-utensils"></i> <a
+					href="pagamento?acao=listar">PAGAMENTOS</a></li>
+				<li><i class="fas fa-utensils"></i> <a
+					href="endereco?acao=listar">ENDEREÇOS</a></li>
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
 					<a href="login?acao=sair">LOGOUT</a></li>
 			</ul>
 		</div>
+
 		</sidebar>
 		<main id="mainContent">
 			<header>
+
 				<i id="iconMenu " onclick="responsiveSidebar() "
 					class="fas fa-bars "> </i>
 				<c:if test="${not empty user }"> ${user }
-					</c:if>
-				<a href="login.jsp"><i class="fas fa-sign-out-alt "></i> &nbsp;
+				</c:if>
+				<a href="login.jsp""><i class="fas fa-sign-out-alt "></i> &nbsp;
 					Logout</a>
 			</header>
+
+			<!-- FIM MENU -->
 			<div class="main-content">
 				<div class="panel-row">
 					<a href="alimento?acao=abrir-form-cadastro">

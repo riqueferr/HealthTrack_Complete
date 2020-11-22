@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,8 +29,6 @@
 					href="pressao?acao=listar">PRESSÃO ARTERIAL</a></li>
 				<li><i class="fas fa-running"></i> <a href="atividade?acao=listar">ATIVIDADES
 						FÍSICAS</a></li>
-				<li><i class="fas fa-calculator"></i> <a href="imc.jsp">IMC</a>
-				</li>
 				<li><i class="fas fa-utensils"></i> <a
 					href="alimento?acao=listar">ALIMENTOS</a></li>
 				<li><i class="fas fa-credit-card"></i> <a
