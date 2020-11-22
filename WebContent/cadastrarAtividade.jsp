@@ -78,15 +78,15 @@
 					<div class="form-group" style="color:white">
 					
 						<label for="id-tempoatv">Tempo da Atividade</label> <input
-							type="number" class="form-control" id="id-tempoatv" name="vlTempo">
+							type="number" class="form-control" id="id-tempoatv" name="vlTempo" placeholder="Ex: 60">
 					</div>
 					<div class="form-group" style="color:white">
 						<label for="id-distancia">Distância</label> <input type="number"
-							class="form-control" id="id-distancia" name="vlDistancia">
+							class="form-control" id="id-distancia" name="vlDistancia" placeholder="Ex: 120">
 					</div>
 					<div class="form-group" style="color:white">
 						<label for="id-usuario">Usuario</label> <input id="id-usuario"
-							type=number class="form-control" name="idUsuario">
+							type=number class="form-control" name="idUsuario" placeholder="Ex: 8001">
 					</div>
 					<!--			<div class="form-group">
 							<label for="weight">Data</label> <input type="date"

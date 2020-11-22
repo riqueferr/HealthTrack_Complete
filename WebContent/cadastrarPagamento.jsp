@@ -78,15 +78,15 @@
 					<div class="form-group" style="color:white">
 					
 						<label for="id_qtdparcela">Quantidade de Parcelas</label> <input
-							type="number" class="form-control" id="id_qtdparcela" name="qtdeParcela">
+							type="number" class="form-control" id="id_qtdparcela" name="qtdeParcela" placeholder="Ex: 3">
 					</div>
 					<div class="form-group" style="color:white">
 						<label for="id-valor">Valor Total</label> <input type="number"
-							class="form-control" id="id-valor" name="vlTotal">
+							class="form-control" id="id-valor" name="vlTotal" placeholder="Ex: 120">
 					</div>
 					<div class="form-group" style="color:white">
 						<label for="id-usuario">Usuário</label> <input id="id-usuario"
-							type=number class="form-control" name="idUsuario">
+							type=number class="form-control" name="idUsuario" placeholder="Ex: 8001">
 						</div>
 					<!--			<div class="form-group">
 							<label for="weight">Data</label> <input type="date"

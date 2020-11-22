@@ -68,27 +68,27 @@
 					<input type="hidden" value="cadastrar" name="acao">
 					<div class="form-group" style="color:white">
 						<label for="id-nome">Nome do Alimento</label> <input type="text"
-							class="form-control" id="id-nome" name="nmAlimento">
+							class="form-control" id="id-nome" name="nmAlimento" placeholder="Ex: maçã">
 					</div>
 					<div class="form-group" style="color:white">
 						<label for="id-qtdeAlimento">Qtde Alimento</label> <input
 							type="number" class="form-control" id="id-qtdeAlimento"
-							name="qtdeAlimento">
+							name="qtdeAlimento" placeholder="Ex: 2">
 					</div>
 					<div class="form-group" style="color:white">
 						<label for="id-calorias">Qtde Calorias</label> <input
 							type="number" class="form-control" id="id-calorias"
-							name="qtdeCaloria">
+							name="qtdeCaloria" placeholder="Ex: 104">
 					</div>
 					<div class="form-group" style="color:white">
-						<label for="id-periodo">Calorias</label> <select name="periodo"
+						<label for="id-periodo">Período</label> <select name="periodo"
 							id="id-periodo" class="form-control">
 							<option value="0" style="color:white">Selecione</option>
 							<c:forEach items="${periodos }" var="periodo">
 								<option value="${periodo.codigo }">${periodo.dsPeriodo }</option>
 							</c:forEach>
 						</select> <label for="id-usuario" style="color:white">Usuario</label> <input id="id-usuario"
-							type=number class="form-control" name="usuario">
+							type=number class="form-control" name="usuario" placeholder="Ex: 8001">
 					</div>
 					<button type="submit" class="btn btn-primary">Cadastrar</button>
 					<a href="alimento?acao=listar" class="btn btn-danger">Cancelar</a>
