@@ -82,7 +82,7 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 			stmt.setDate(1, dataAtual);
 			stmt.setInt(2, atividade.getVlTempo());
 			stmt.setDouble(3, atividade.getVlDistancia());
-			stmt.setInt(4, atividade.getTipoAtv().getIdTipoAtv());
+			stmt.setInt(4, atividade.getTipoAtv().getCodigo());
 			stmt.setInt(5, atividade.getIdUsuario());
 			stmt.executeUpdate();
 
@@ -113,7 +113,7 @@ public class AtividadeDAPOImpl implements AtividadeDAO {
 			stmt.setDate(1, data);
 			stmt.setInt(2, atividade.getVlTempo());
 			stmt.setDouble(3, atividade.getVlDistancia());
-			stmt.setInt(4, atividade.getTipoAtv().getIdTipoAtv());
+			stmt.setInt(4, atividade.getTipoAtv().getCodigo());
 			stmt.setInt(5, atividade.getIdUsuario());
 			stmt.setInt(6, atividade.getCodigo());
 

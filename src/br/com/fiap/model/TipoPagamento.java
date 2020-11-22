@@ -2,24 +2,18 @@ package br.com.fiap.model;
 
 public class TipoPagamento {
 
-    private Integer idTipo;
+    private Integer codigo;
     private String dsTipoPagamento;
 
-    public TipoPagamento(Integer idTipo, String dsTipoPagamento) {
-        this.idTipo = idTipo;
+    public TipoPagamento(Integer codigo, String dsTipoPagamento) {
+        this.setCodigo(codigo);
         this.dsTipoPagamento = dsTipoPagamento;
     }
 
     public TipoPagamento() {
     }
 
-    public Integer getIdTipo() {
-        return idTipo;
-    }
 
-    public void setIdTipo(Integer idTipo) {
-        this.idTipo = idTipo;
-    }
 
     public String getDsTipoPagamento() {
         return dsTipoPagamento;
@@ -28,6 +22,14 @@ public class TipoPagamento {
     public void setDsTipoPagamento(String dsTipoPagamento) {
         this.dsTipoPagamento = dsTipoPagamento;
     }
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
 
 
 }
