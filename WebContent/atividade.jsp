@@ -64,6 +64,8 @@
 					<table class="table table-dark">
 						<thead>
 							<tr>
+								<th scope="col">ID</th>
+								<th scope="col">Tipo da atv</th>
 								<th scope="col">Data</th>
 								<th scope="col">Tempo (min)</th>
 								<th scope="col">Distância (km)</th>
@@ -74,6 +76,8 @@
 						<tbody>
 							<c:forEach items="${atividades}" var="atividade">
 								<tr>
+									<td>${atividade.codigo }</td>
+									<td>${atividade.tipoAtv.dsTipoAtv }</td>
 									<td><fmt:formatDate value="${atividade.dtCadastro.time }"
 											pattern="dd/MM/yyyy" /></td>
 									<td>${atividade.vlTempo }</td>

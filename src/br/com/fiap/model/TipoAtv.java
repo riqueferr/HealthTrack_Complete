@@ -2,14 +2,14 @@ package br.com.fiap.model;
 
 public class TipoAtv {
 	
-	private Integer idTipoAtv;
+	private Integer codigo;
 	private String dsTipoAtv;
 	
 	
 	
-	public TipoAtv(Integer idTipoAtv, String dsTipoAtv) {
+	public TipoAtv(Integer codigo, String dsTipoAtv) {
 		super();
-		this.idTipoAtv = idTipoAtv;
+		this.setCodigo(codigo);
 		this.dsTipoAtv = dsTipoAtv;
 	}
 	
@@ -19,19 +19,24 @@ public class TipoAtv {
 		super();
 	}
 
-
-
-	public Integer getIdTipoAtv() {
-		return idTipoAtv;
-	}
-	public void setIdTipoAtv(Integer idTipoAtv) {
-		this.idTipoAtv = idTipoAtv;
-	}
+	
 	public String getDsTipoAtv() {
 		return dsTipoAtv;
 	}
 	public void setDsTipoAtv(String dsTipoAtv) {
 		this.dsTipoAtv = dsTipoAtv;
+	}
+
+
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 	
 	

@@ -30,18 +30,18 @@ public class EmailBO {
 			}
 		});
 
-		try {
+//		 try {
+//
+//			Message email = new MimeMessage(session);
+//			email.setFrom(new InternetAddress(username));
+//			email.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
+//			email.setSubject(assunto);
+//			email.setText(mensagem);
+//
+//			Transport.send(email);
 
-			Message email = new MimeMessage(session);
-			email.setFrom(new InternetAddress(username));
-			email.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
-			email.setSubject(assunto);
-			email.setText(mensagem);
-
-			Transport.send(email);
-
-		} catch (MessagingException e) {
-			throw new EmailException("Erro ao enviar o e-mail");
-		}
+//		} catch (MessagingException e) {
+//			throw new EmailException("Erro ao enviar o e-mail");
+//		}
 	}
 }

@@ -126,10 +126,12 @@ public class AtividadeServlet extends HttpServlet {
 			Calendar dtCadastro = Calendar.getInstance();
 
 			TipoAtv tipoAtividade = new TipoAtv();
-			tipoAtividade.setIdTipoAtv(idTipoAtividade);
+			tipoAtividade.setCodigo(idTipoAtividade);
 
 			Atividade atividade = new Atividade(codigo, dtCadastro, vlTempo, vlDistancia, idUsuario);
-
+			
+			atividade.setTipoAtv(tipoAtividade);
+			
 			dao.atualizar(atividade);
 
 			request.setAttribute("msg", "Alimento atulizado.");
@@ -153,10 +155,10 @@ public class AtividadeServlet extends HttpServlet {
 			Calendar dtCadastro = Calendar.getInstance();
 
 			TipoAtv tipoAtividade = new TipoAtv();
-			tipoAtividade.setIdTipoAtv(idTipoAtividade);
+			tipoAtividade.setCodigo(idTipoAtividade);
 
 			Atividade atividade = new Atividade(0, dtCadastro, vlTempo, vlDistancia, idUsuario);
-
+			atividade.setTipoAtv(tipoAtividade);
 			dao.cadastrar(atividade);
 
 			request.setAttribute("msg", "Atividade cadastrado!");
