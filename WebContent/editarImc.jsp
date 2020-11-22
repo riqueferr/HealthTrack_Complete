@@ -31,10 +31,8 @@
 						FÍSICAS</a></li>
 				<li><i class="fas fa-utensils"></i> <a
 					href="alimento?acao=listar">ALIMENTOS</a></li>
-				<li><i class="fas fa-utensils"></i> <a
+				<li><i class="fas fa-credit-card"></i> <a
 					href="pagamento?acao=listar">PAGAMENTOS</a></li>
-				<li><i class="fas fa-utensils"></i> <a
-					href="endereco?acao=listar">ENDEREÇOS</a></li>
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
 					<a href="login?acao=sair">LOGOUT</a></li>
 			</ul>
@@ -46,10 +44,13 @@
 
 				<i id="iconMenu " onclick="responsiveSidebar() "
 					class="fas fa-bars "> </i>
-				<c:if test="${not empty user }"> ${user }
+					<div style="color: white"> Olá, 
+					<c:if test="${not empty user }"> ${user }
 				</c:if>
-				<a href="login.jsp""><i class="fas fa-sign-out-alt "></i> &nbsp;
-					Logout</a>
+				</div>
+				<a href="login?acao=sair"><i class="fas fa-sign-out-alt "></i>
+					&nbsp; Logout</a>
+					
 			</header>
 
 			<!-- FIM MENU -->
@@ -57,29 +58,28 @@
 			<div class="container">
 				<div class="dynamic-content">
 					<form method="post" action="imc">
-					<input type="hidden" value="editar" name="acao"> <input
-						type="hidden" value="${imc.codigo }" name="codigo">
+						<input type="hidden" value="editar" name="acao"> <input
+							type="hidden" value="${imc.codigo }" name="codigo">
 						<div class="row testeCorBranca">
 							<div class="col-md-2">
 								<div class="form-group">
-									<label for="id_peso" style="color:white">Novo peso</label>
-									 <input type="text"
-										class="form-control " id="id_peso" name="peso" 
+									<label for="id_peso" style="color: white">Novo peso</label> <input
+										type="text" class="form-control " id="id_peso" name="peso"
 										value="${imc.peso}">
 								</div>
 							</div>
 							<div class="col-md-2">
 								<div class="form-group">
-									<label for="id_altura" style="color:white">Nova altura</label>
-									 <input type="text"
-										class="form-control" id="id_altura" name="altura" value="${imc.altura }">
+									<label for="id_altura" style="color: white">Nova altura</label>
+									<input type="text" class="form-control" id="id_altura"
+										name="altura" value="${imc.altura }">
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
-									<label for="id_usuario" style="color:white">ID Usuario</label>
-									 <input type="text"
-										class="form-control" id="id_usuario" name="idUsuario" value="${imc.idUsuario }">
+									<label for="id_usuario" style="color: white">ID Usuario</label>
+									<input type="text" class="form-control" id="id_usuario"
+										name="idUsuario" value="${imc.idUsuario }">
 								</div>
 							</div>
 						</div>

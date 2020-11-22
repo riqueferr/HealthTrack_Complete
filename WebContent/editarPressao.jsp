@@ -31,10 +31,8 @@
 						FÍSICAS</a></li>
 				<li><i class="fas fa-utensils"></i> <a
 					href="alimento?acao=listar">ALIMENTOS</a></li>
-				<li><i class="fas fa-utensils"></i> <a
+				<li><i class="fas fa-credit-card"></i> <a
 					href="pagamento?acao=listar">PAGAMENTOS</a></li>
-				<li><i class="fas fa-utensils"></i> <a
-					href="endereco?acao=listar">ENDEREÇOS</a></li>
 				<li class="sidebar_logout"><i class="fas fa-sign-out-alt"></i>
 					<a href="login?acao=sair">LOGOUT</a></li>
 			</ul>
@@ -46,10 +44,13 @@
 
 				<i id="iconMenu " onclick="responsiveSidebar() "
 					class="fas fa-bars "> </i>
-				<c:if test="${not empty user }"> ${user }
+					<div style="color: white"> Olá, 
+					<c:if test="${not empty user }"> ${user }
 				</c:if>
-				<a href="login.jsp""><i class="fas fa-sign-out-alt "></i> &nbsp;
-					Logout</a>
+				</div>
+				<a href="login?acao=sair"><i class="fas fa-sign-out-alt "></i>
+					&nbsp; Logout</a>
+					
 			</header>
 
 			<!-- FIM MENU -->
@@ -65,24 +66,27 @@
 				<div class="dynamic-content">
 					<form method="post" action="pressao">
 						<input type="hidden" value="editar" name="acao"> <input
-						type="hidden" value="${pressao.codigo }" name="codigo">
+							type="hidden" value="${pressao.codigo }" name="codigo">
 						<div class="form-group">
 							<label for="id_sistolica" style="color: white">Pressão
 								Sistólica</label> <input id="id_sistolica" type="number"
-								class="form-control" name="sistolica" value="${pressao.nrSistolica }">
+								class="form-control" name="sistolica"
+								value="${pressao.nrSistolica }">
 						</div>
 						<div class="form-group">
 							<label for="id_diastolica" style="color: white">Pressão
 								Diastólica</label> <input id="id_diastolica" type="number"
-								class="form-control" name="diastolica" value="${pressao.nrDiastolica }">
+								class="form-control" name="diastolica"
+								value="${pressao.nrDiastolica }">
 						</div>
 						<div class="form-group">
 							<label for="id_usuario" style="color: white">ID do
 								usuário</label> <input id="id_usuario" type="number"
-								class="form-control" name="idusuario" value="${pressao.idUsuario }">
+								class="form-control" name="idusuario"
+								value="${pressao.idUsuario }">
 						</div>
 						<input type="submit" class="btn btn-primary" value="Salvar">
-					<a href="pressao?acao=listar" class="btn btn-danger">Cancelar</a>
+						<a href="pressao?acao=listar" class="btn btn-danger">Cancelar</a>
 					</form>
 				</div>
 			</div>
